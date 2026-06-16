@@ -1,0 +1,46 @@
+<style>
+
+.variant-picker { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+.variant-picker__option label { font-weight: 600; margin-bottom: 5px; display: block; }
+.variant-picker__swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.variant-picker__swatch { padding: 8px 16px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px; font-size: 14px; }
+.variant-picker__swatch.active { border-color: #111; background: #111; color: #fff; }
+
+</style>
+
+
+<div class="variant-picker">
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      <div class="variant-picker__option">
+        <label>{{ option.name }}</label>
+        <div class="variant-picker__swatches">
+          {% for value in option.values %}
+            <button class="variant-picker__swatch {% if option.selected_value == value %}active{% endif %}" data-option="{{ option.name }}" data-value="{{ value }}">{{ value }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  {% endunless %}
+  <form action="/cart/add" method="post" class="variant-picker__form">
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: 12345 }}">
+    <div style="margin-top:20px;">
+      <button type="submit" class="btn btn--primary" style="width:100%; padding:14px;">Add to Cart</button>
+    </div>
+  </form>
+</div>
+
+
+{% schema %}
+{
+  "name": "Variant Picker",
+  "tag": "section",
+  "class": "shopify-section-variant-picker",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Variant Picker"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+<style>
+
+.blog-cats { padding: 20px; }
+.blog-cats__link { font-weight:600; color:#888; padding: 5px 15px; }
+.blog-cats__link.active { color:#111; border-bottom: 2px solid #111; }
+
+</style>
+
+
+<div class="blog-cats page-width text-center">
+  <div style="display:inline-flex; gap:10px; border-bottom:1px solid #eee; padding-bottom:10px;">
+    <a href="#" class="blog-cats__link active">All Journal</a>
+    <a href="#" class="blog-cats__link">Sourcing</a>
+    <a href="#" class="blog-cats__link">Trends</a>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Blog Categories Bar",
+  "tag": "section",
+  "class": "shopify-section-blog-categories",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Blog Categories Bar"
+    }
+  ]
+}
+{% endschema %}

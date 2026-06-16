@@ -1,0 +1,31 @@
+<style>
+
+.author-bio { padding: 20px; }
+
+</style>
+
+
+<div class="author-bio page-width">
+  <div style="background:#fafafa; padding:20px; border-radius:6px; display:flex; gap:20px; align-items:center;">
+    <div style="background:#ddd; width:60px; height:60px; border-radius:50%;"></div>
+    <div>
+      <h4 style="margin:0;">Written by {{ article.author | default: 'Editor-in-Chief' }}</h4>
+      <p style="margin:5px 0 0; font-size:14px; color:#555;">Design enthusiast and expert curator of lifestyle trends, organic textile solutions, and luxury brand strategy.</p>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Author Bio Card",
+  "tag": "section",
+  "class": "shopify-section-author-bio",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Author Bio Card"
+    }
+  ]
+}
+{% endschema %}

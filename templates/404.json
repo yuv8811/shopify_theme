@@ -1,0 +1,15 @@
+{
+  "name": "404",
+  "sections": {
+    "rich-text": {
+      "type": "rich-text",
+      "settings": {
+        "heading": "404 - Page Not Found",
+        "text": "The page you are looking for does not exist."
+      }
+    }
+  },
+  "order": [
+    "rich-text"
+  ]
+}

@@ -1,0 +1,44 @@
+<style>
+
+.rich-text {
+  padding: 60px 20px;
+  max-width: 800px;
+}
+.rich-text h2 { font-size: 30px; margin-bottom: 20px; }
+.rich-text__body { font-size: 16px; color: #555; line-height: 1.6; }
+
+</style>
+
+
+<div class="rich-text text-center page-width">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="rich-text__body">{{ section.settings.text }}</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "tag": "section",
+  "class": "shopify-section-rich-text",
+  "settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "Talk about your brand",
+    "label": "Heading"
+  },
+  {
+    "type": "textarea",
+    "id": "text",
+    "default": "Share store details, promotions, or brand stories with your customers.",
+    "label": "Text"
+  }
+],
+  "presets": [
+    {
+      "name": "Rich Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+<style>
+
+.comparison-table { padding: 40px 20px; }
+.comparison-table__elem { width: 100%; border-collapse: collapse; margin-top: 30px; }
+.comparison-table__elem th, .comparison-table__elem td { border: 1px solid #eee; padding: 15px; text-align: center; }
+.comparison-table__elem th { background: #fafafa; font-weight: 600; }
+
+</style>
+
+
+<div class="comparison-table page-width">
+  <h2 class="text-center">Compare our features</h2>
+  <table class="comparison-table__elem">
+    <thead>
+      <tr>
+        <th>Features</th>
+        <th>Our Brand</th>
+        <th>Competitors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100% Organic Materials</td>
+        <td>✔️ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Handmade Premium Quality</td>
+        <td>✔️ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Fairtrade Pricing</td>
+        <td>✔️ Yes</td>
+        <td>✔️ Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "shopify-section-comparison-table",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Comparison Table"
+    }
+  ]
+}
+{% endschema %}

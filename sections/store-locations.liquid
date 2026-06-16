@@ -1,0 +1,39 @@
+<style>
+
+.store-locations { padding: 40px 20px; }
+.store-locations__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+.store-locations__card { border:1px solid #eee; padding:20px; border-radius:6px; background:#fff; }
+
+</style>
+
+
+<div class="store-locations page-width">
+  <h2 class="text-center">Find a Location</h2>
+  <div class="store-locations__grid">
+    <div class="store-locations__card">
+      <h4>New York Flagship</h4>
+      <p>128 Mercer St, SoHo, NY 10012</p>
+      <p>Mon - Sat: 11 AM - 7 PM</p>
+    </div>
+    <div class="store-locations__card">
+      <h4>London Boutique</h4>
+      <p>32 Redchurch St, Shoreditch, E2 7DP</p>
+      <p>Mon - Sat: 10 AM - 6 PM</p>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Store Locations Map",
+  "tag": "section",
+  "class": "shopify-section-store-locations",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Store Locations Map"
+    }
+  ]
+}
+{% endschema %}

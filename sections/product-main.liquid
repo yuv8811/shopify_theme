@@ -1,0 +1,39 @@
+<style>
+
+.product-main { padding: 40px 20px; }
+.product-main__layout { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 768px) {
+  .product-main__layout { grid-template-columns: 1.2fr 1fr; }
+}
+
+</style>
+
+
+<div class="product-main page-width">
+  <div class="product-main__layout">
+    <div class="product-main__gallery">
+      {% section 'product-gallery' %}
+    </div>
+    <div class="product-main__info">
+      {% section 'product-information' %}
+      {% section 'variant-picker' %}
+      {% section 'product-accordion' %}
+    </div>
+  </div>
+  {% section 'product-tabs' %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Product Details Main",
+  "tag": "section",
+  "class": "shopify-section-product-main",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Details Main"
+    }
+  ]
+}
+{% endschema %}

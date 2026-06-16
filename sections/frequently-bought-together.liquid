@@ -1,0 +1,40 @@
+<style>
+
+.fbt { padding: 40px 20px; border-top: 1px solid #eee; }
+.fbt__container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; background: #fafafa; padding: 20px; border-radius: 6px; }
+.fbt__products { display: flex; align-items: center; gap: 15px; }
+.fbt__product img { border-radius: 4px; }
+.fbt__plus { font-size: 24px; font-weight: 700; color: #888; }
+
+</style>
+
+
+<div class="fbt page-width">
+  <h3>Frequently Bought Together</h3>
+  <div class="fbt__container">
+    <div class="fbt__products">
+      <div class="fbt__product"><img src="https://picsum.photos/80/80?random=1" alt="FBT 1" loading="lazy" width="80" height="80"></div>
+      <div class="fbt__plus">+</div>
+      <div class="fbt__product"><img src="https://picsum.photos/80/80?random=2" alt="FBT 2" loading="lazy" width="80" height="80"></div>
+    </div>
+    <div class="fbt__action">
+      <div style="font-weight:700; margin-bottom:10px;">Total Price: $89.00</div>
+      <button class="btn btn--primary">Add Both to Cart</button>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Frequently Bought Together",
+  "tag": "section",
+  "class": "shopify-section-frequently-bought-together",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Frequently Bought Together"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+<style>
+
+.countdown-timer { padding: 40px 20px; background: #fafafa; border-radius: 6px; }
+.countdown-timer__clock { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+.countdown-timer__unit { display: flex; flex-direction: column; align-items: center; }
+.countdown-timer__unit span { font-size: 36px; font-weight: 700; color: #111; }
+.countdown-timer__unit label { font-size: 12px; text-transform: uppercase; color: #666; }
+
+</style>
+
+
+<div class="countdown-timer page-width text-center" id="CountdownTimer" data-end="{{ section.settings.end_date }}">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="countdown-timer__clock">
+    <div class="countdown-timer__unit"><span id="CdDays">00</span><label>Days</label></div>
+    <div class="countdown-timer__unit"><span id="CdHours">00</span><label>Hours</label></div>
+    <div class="countdown-timer__unit"><span id="CdMins">00</span><label>Mins</label></div>
+    <div class="countdown-timer__unit"><span id="CdSecs">00</span><label>Secs</label></div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const timer = document.getElementById('CountdownTimer');
+    if (timer) {
+      const endTime = new Date(timer.getAttribute('data-end')).getTime();
+      function update() {
+        const now = new Date().getTime();
+        const diff = endTime - now;
+        if (diff < 0) {
+          timer.style.display = 'none';
+          return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('CdDays').textContent = String(d).padStart(2, '0');
+        document.getElementById('CdHours').textContent = String(h).padStart(2, '0');
+        document.getElementById('CdMins').textContent = String(m).padStart(2, '0');
+        document.getElementById('CdSecs').textContent = String(s).padStart(2, '0');
+      }
+      setInterval(update, 1000);
+      update();
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "tag": "section",
+  "class": "shopify-section-countdown-timer",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "default": "Flash Sale ends in:",
+    "label": "Title"
+  },
+  {
+    "type": "text",
+    "id": "end_date",
+    "default": "2026-12-31T23:59:59",
+    "label": "End Date (YYYY-MM-DDTHH:MM:SS)"
+  }
+],
+  "presets": [
+    {
+      "name": "Countdown Timer"
+    }
+  ]
+}
+{% endschema %}

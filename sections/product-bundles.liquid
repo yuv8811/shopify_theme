@@ -1,0 +1,39 @@
+<style>
+
+.product-bundles { padding: 40px 20px; }
+.product-bundles__grid { display: flex; gap: 20px; flex-wrap: wrap; }
+.product-bundles__card { border: 1px dashed #ccc; padding: 20px; border-radius: 6px; flex: 1 1 200px; }
+
+</style>
+
+
+<div class="product-bundles page-width">
+  <h3>Discount Bundles</h3>
+  <div class="product-bundles__grid">
+    <div class="product-bundles__card">
+      <h4>Buy 2 Pack</h4>
+      <p>Save 10% on your total order.</p>
+      <button class="btn btn--secondary btn--small">Buy Bundle</button>
+    </div>
+    <div class="product-bundles__card">
+      <h4>Buy 3 Pack</h4>
+      <p>Save 15% on your total order.</p>
+      <button class="btn btn--secondary btn--small">Buy Bundle</button>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Product Bundles",
+  "tag": "section",
+  "class": "shopify-section-product-bundles",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Bundles"
+    }
+  ]
+}
+{% endschema %}

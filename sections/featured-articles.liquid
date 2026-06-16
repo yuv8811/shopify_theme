@@ -1,0 +1,38 @@
+<style>
+
+.featured-articles { padding: 40px 20px; }
+
+</style>
+
+
+<div class="featured-articles page-width">
+  <h2 class="text-center">Featured Articles</h2>
+  <div class="blog-grid">
+    {% for i in (1..3) %}
+      <div class="article-card">
+        <div class="article-card__image-wrapper">
+          <img src="https://picsum.photos/400/250?random={{ i | plus: 15 }}" alt="featured" loading="lazy" width="400" height="250">
+        </div>
+        <div class="article-card__info">
+          <h3><a href="#">Sustainable Fashion Trends {{ i }}</a></h3>
+          <p style="font-size:14px; color:#666;">Discover how organic sourcing is reshaping the modern luxury fashion industry.</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Featured Articles Grid",
+  "tag": "section",
+  "class": "shopify-section-featured-articles",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Featured Articles Grid"
+    }
+  ]
+}
+{% endschema %}

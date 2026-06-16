@@ -1,0 +1,25 @@
+<style>
+
+.collection-desc { padding: 20px; }
+
+</style>
+
+
+<div class="collection-desc page-width">
+  <p style="color:#666; font-size:15px; line-height:1.6;">{{ collection.description }}</p>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Description",
+  "tag": "section",
+  "class": "shopify-section-collection-description",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Description"
+    }
+  ]
+}
+{% endschema %}

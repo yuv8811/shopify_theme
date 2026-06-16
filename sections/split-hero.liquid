@@ -1,0 +1,67 @@
+<style>
+
+.split-hero {
+  display: flex;
+  height: 500px;
+  flex-wrap: wrap;
+}
+.split-hero__side {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 250px;
+}
+.split-hero__content {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+.split-hero__content h2 { color: #fff; font-size: 32px; margin-bottom: 20px; }
+
+</style>
+
+
+<div class="split-hero">
+  <div class="split-hero__side split-hero__left" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/800/800?random=1') no-repeat center/cover;">
+    <div class="split-hero__content">
+      <h2>{{ section.settings.left_heading }}</h2>
+      <a href="/collections/men" class="btn btn--secondary" style="border-color:#fff; color:#fff;">Explore Men</a>
+    </div>
+  </div>
+  <div class="split-hero__side split-hero__right" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/800/800?random=2') no-repeat center/cover;">
+    <div class="split-hero__content">
+      <h2>{{ section.settings.right_heading }}</h2>
+      <a href="/collections/women" class="btn btn--secondary" style="border-color:#fff; color:#fff;">Explore Women</a>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Split Hero",
+  "tag": "section",
+  "class": "shopify-section-split-hero",
+  "settings": [
+  {
+    "type": "text",
+    "id": "left_heading",
+    "default": "Mens Wear",
+    "label": "Left Heading"
+  },
+  {
+    "type": "text",
+    "id": "right_heading",
+    "default": "Womens Wear",
+    "label": "Right Heading"
+  }
+],
+  "presets": [
+    {
+      "name": "Split Hero"
+    }
+  ]
+}
+{% endschema %}

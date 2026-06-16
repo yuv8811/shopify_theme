@@ -1,0 +1,28 @@
+<style>
+
+.collection-banner h1 { margin-bottom: 10px; }
+
+</style>
+
+
+<div class="collection-banner text-center" style="background:#f9f9f9; padding:50px 20px;">
+  <div class="page-width">
+    <h1>{{ collection.title | default: 'Collection Title' }}</h1>
+    <p>{{ collection.description | default: 'Browse our exquisite range of catalog items selected for quality.' }}</p>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "tag": "section",
+  "class": "shopify-section-collection-banner",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}

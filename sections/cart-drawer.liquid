@@ -1,0 +1,138 @@
+<style>
+
+.cart-drawer {
+  position: fixed;
+  top: 0; bottom: 0; right: 0; left: 0;
+  z-index: 1001;
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+.cart-drawer.active {
+  visibility: visible;
+}
+.cart-drawer__overlay {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cart-drawer.active .cart-drawer__overlay {
+  opacity: 1;
+}
+.cart-drawer__content {
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cart-drawer.active .cart-drawer__content {
+  transform: translateX(0);
+}
+.cart-drawer__header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-drawer__close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+.cart-drawer__items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+.cart-drawer__item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 15px;
+}
+.cart-drawer__item-title {
+  font-weight: 600;
+  color: #111111;
+  display: block;
+}
+.cart-drawer__item-price {
+  font-size: 14px;
+  color: #555;
+  display: block;
+}
+.cart-drawer__footer {
+  padding: 20px;
+  border-top: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+.cart-drawer__subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+</style>
+
+
+<div id="CartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer__overlay"></div>
+  <div class="cart-drawer__content">
+    <div class="cart-drawer__header">
+      <h3>Shopping Cart</h3>
+      <button type="button" id="CloseCart" class="cart-drawer__close">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          <div class="cart-drawer__item">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.title }}" width="80" height="80" loading="lazy">
+            <div class="cart-drawer__item-info">
+              <a href="{{ item.url }}" class="cart-drawer__item-title">{{ item.product.title }}</a>
+              <span class="cart-drawer__item-price">{{ item.final_line_price | money }}</span>
+              <div class="cart-drawer__item-qty">Qty: {{ item.quantity }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="cart-drawer__empty">Your cart is empty.</p>
+      {% endif %}
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal:</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <a href="{{ routes.cart_url }}" class="btn btn--secondary" style="width:100%; text-align:center; margin-bottom:10px;">View Cart</a>
+      <form action="/cart" method="post">
+        <button type="submit" name="checkout" class="btn btn--primary" style="width:100%;">Checkout</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "tag": "section",
+  "class": "shopify-section-cart-drawer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cart Drawer"
+    }
+  ]
+}
+{% endschema %}

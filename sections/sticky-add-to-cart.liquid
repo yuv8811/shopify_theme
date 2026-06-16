@@ -1,0 +1,49 @@
+<style>
+
+.sticky-cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; border-top: 1px solid #eee; padding: 10px 0; z-index: 99; transform: translateY(100%); transition: transform 0.3s; }
+.sticky-cart-bar.active { transform: translateY(0); }
+.sticky-cart-bar__inner { display: flex; justify-content: space-between; align-items: center; }
+.sticky-cart-bar__info { display: flex; gap: 10px; align-items: center; }
+
+</style>
+
+
+<div class="sticky-cart-bar" id="StickyCart">
+  <div class="page-width sticky-cart-bar__inner">
+    <div class="sticky-cart-bar__info">
+      <img src="https://picsum.photos/50/50" alt="product icon" loading="lazy" width="50" height="50">
+      <div>
+        <h4 style="margin:0; font-size:14px;">{{ product.title | default: 'Sample Product' }}</h4>
+        <span style="font-size:13px; color:#666;">{{ product.price | default: 4900 | money }}</span>
+      </div>
+    </div>
+    <form action="/cart/add" method="post">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: 12345 }}">
+      <button type="submit" class="btn btn--primary">Add to Cart</button>
+    </form>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('StickyCart');
+    if (el) {
+      if (window.scrollY > 400) el.classList.add('active');
+      else el.classList.remove('active');
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Sticky Add To Cart",
+  "tag": "section",
+  "class": "shopify-section-sticky-add-to-cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Sticky Add To Cart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+<style>
+
+.collection-sorting { padding: 10px 20px; }
+
+</style>
+
+
+<div class="collection-sorting page-width" style="text-align:right;">
+  <label style="font-weight:600; margin-right:10px;">Sort By:</label>
+  <select class="btn btn--secondary btn--small" style="background:#fff; padding:6px 12px;">
+    <option>Featured</option>
+    <option>Best Selling</option>
+    <option>Price: Low to High</option>
+    <option>Price: High to Low</option>
+  </select>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Sorting",
+  "tag": "section",
+  "class": "shopify-section-collection-sorting",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Sorting"
+    }
+  ]
+}
+{% endschema %}

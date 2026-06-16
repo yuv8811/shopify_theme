@@ -1,0 +1,47 @@
+<style>
+
+.collection-grid { padding: 20px; }
+
+</style>
+
+
+<div class="collection-grid page-width">
+  <div class="product-grid">
+    {% for product in collection.products %}
+      <div class="product-card">
+        <a href="{{ product.url }}">
+          <div class="product-card__image-wrapper">
+            <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" loading="lazy" width="300" height="300">
+          </div>
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          <div class="product-card__price">{{ product.price | money }}</div>
+        </a>
+      </div>
+    {% else %}
+      {% for i in (1..8) %}
+        <div class="product-card">
+          <a href="#">
+            <div class="product-card__image-wrapper" style="background:#eee; height:250px;"></div>
+            <h3 class="product-card__title">Sample Catalog Item {{ i }}</h3>
+            <div class="product-card__price">$35.00</div>
+          </a>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Products Grid",
+  "tag": "section",
+  "class": "shopify-section-collection-grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Products Grid"
+    }
+  ]
+}
+{% endschema %}

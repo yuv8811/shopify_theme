@@ -1,0 +1,14 @@
+{
+  "name": "Cart",
+  "sections": {
+    "custom-liquid": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<h1>Your Cart</h1>"
+      }
+    }
+  },
+  "order": [
+    "custom-liquid"
+  ]
+}

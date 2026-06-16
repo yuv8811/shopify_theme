@@ -1,0 +1,73 @@
+<style>
+
+.video-hero {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-hero__bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  object-fit: cover;
+}
+.video-hero__overlay {
+  position: absolute;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+.video-hero__content {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+}
+.video-hero__content h2 { color: #ffffff; font-size: 38px; }
+
+</style>
+
+
+<div class="video-hero">
+  <video class="video-hero__bg" autoplay loop muted playsinline>
+    <source src="{{ section.settings.video_url }}" type="video/mp4">
+  </video>
+  <div class="video-hero__overlay"></div>
+  <div class="video-hero__content text-center">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>Engaging video experience right on the storefront.</p>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Video Hero",
+  "tag": "section",
+  "class": "shopify-section-video-hero",
+  "settings": [
+  {
+    "type": "text",
+    "id": "video_url",
+    "default": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "label": "Direct MP4 Video URL"
+  },
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "Video Hero Backdrop",
+    "label": "Heading"
+  }
+],
+  "presets": [
+    {
+      "name": "Video Hero"
+    }
+  ]
+}
+{% endschema %}

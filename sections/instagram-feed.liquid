@@ -1,0 +1,51 @@
+<style>
+
+.instagram-feed { padding: 50px 20px; }
+.instagram-handle { margin-bottom: 30px; font-weight: 600; }
+.instagram-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+.instagram-feed__item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+</style>
+
+
+<div class="instagram-feed page-width text-center">
+  <h2>Follow Us on Instagram</h2>
+  <p class="instagram-handle"><a href="#">{{ section.settings.handle }}</a></p>
+  <div class="instagram-feed__grid">
+    <div class="instagram-feed__item"><img src="https://picsum.photos/300/300?random=10" alt="Instagram Post" loading="lazy" width="300" height="300"></div>
+    <div class="instagram-feed__item"><img src="https://picsum.photos/300/300?random=11" alt="Instagram Post" loading="lazy" width="300" height="300"></div>
+    <div class="instagram-feed__item"><img src="https://picsum.photos/300/300?random=12" alt="Instagram Post" loading="lazy" width="300" height="300"></div>
+    <div class="instagram-feed__item"><img src="https://picsum.photos/300/300?random=13" alt="Instagram Post" loading="lazy" width="300" height="300"></div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Instagram Feed Placeholder",
+  "tag": "section",
+  "class": "shopify-section-instagram-feed",
+  "settings": [
+  {
+    "type": "text",
+    "id": "handle",
+    "default": "@my_brand",
+    "label": "Instagram Handle"
+  }
+],
+  "presets": [
+    {
+      "name": "Instagram Feed Placeholder"
+    }
+  ]
+}
+{% endschema %}

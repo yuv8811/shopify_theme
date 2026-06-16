@@ -1,0 +1,63 @@
+<style>
+
+.icon-with-text { padding: 30px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.icon-with-text__grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.icon-with-text__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.icon-with-text__icon {
+  font-size: 32px;
+}
+.icon-with-text__content h4 { margin: 0; font-size: 16px; }
+.icon-with-text__content p { margin: 0; font-size: 14px; color: #666; }
+
+</style>
+
+
+<div class="icon-with-text page-width">
+  <div class="icon-with-text__grid">
+    <div class="icon-with-text__item">
+      <div class="icon-with-text__icon">🚚</div>
+      <div class="icon-with-text__content">
+        <h4>Free Worldwide Delivery</h4>
+        <p>On all orders above $100</p>
+      </div>
+    </div>
+    <div class="icon-with-text__item">
+      <div class="icon-with-text__icon">🛡️</div>
+      <div class="icon-with-text__content">
+        <h4>Secure Checkouts</h4>
+        <p>100% SSL protected payments</p>
+      </div>
+    </div>
+    <div class="icon-with-text__item">
+      <div class="icon-with-text__icon">🔄</div>
+      <div class="icon-with-text__content">
+        <h4>30 Days Returns</h4>
+        <p>Hassle free replacement policy</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Icon with Text",
+  "tag": "section",
+  "class": "shopify-section-icon-with-text",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Icon with Text"
+    }
+  ]
+}
+{% endschema %}

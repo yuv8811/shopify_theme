@@ -1,0 +1,32 @@
+<style>
+
+.product-information { display: flex; flex-direction: column; gap: 12px; }
+.product-vendor { text-transform: uppercase; font-size: 13px; color: #888; font-weight: 600; }
+.product-title { font-size: 28px; margin: 0; }
+.product-price { font-size: 22px; font-weight: 700; color: #111; }
+.product-description { font-size: 15px; color: #555; line-height: 1.6; }
+
+</style>
+
+
+<div class="product-information">
+  <span class="product-vendor">{{ product.vendor | default: 'Brand Name' }}</span>
+  <h1 class="product-title">{{ product.title | default: 'Example Product Name' }}</h1>
+  <div class="product-price">{{ product.price | default: 4900 | money }}</div>
+  <div class="product-description rte">{{ product.description | default: 'This is a premium product built to suit clean styling and comfortable everyday usage. Constructed using high grade organic materials.' }}</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Product Info Text",
+  "tag": "section",
+  "class": "shopify-section-product-information",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Info Text"
+    }
+  ]
+}
+{% endschema %}

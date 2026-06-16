@@ -1,0 +1,40 @@
+<style>
+
+.contact-form { padding: 40px 20px; }
+
+</style>
+
+
+<div class="contact-form page-width">
+  <h2 class="text-center">Send us a Message</h2>
+  <form action="/contact#contact_form" method="post" style="max-width:600px; margin:30px auto; display:flex; flex-direction:column; gap:15px;">
+    <div>
+      <label style="display:block; font-weight:600; margin-bottom:5px;">Name</label>
+      <input type="text" name="contact[name]" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+    </div>
+    <div>
+      <label style="display:block; font-weight:600; margin-bottom:5px;">Email</label>
+      <input type="email" name="contact[email]" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+    </div>
+    <div>
+      <label style="display:block; font-weight:600; margin-bottom:5px;">Message</label>
+      <textarea name="contact[body]" rows="6" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+    </div>
+    <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Submit Message</button>
+  </form>
+</div>
+
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "tag": "section",
+  "class": "shopify-section-contact-form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}

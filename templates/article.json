@@ -1,0 +1,15 @@
+{
+  "name": "Article",
+  "sections": {
+    "author-bio": {
+      "type": "author-bio"
+    },
+    "related-posts": {
+      "type": "related-posts"
+    }
+  },
+  "order": [
+    "author-bio",
+    "related-posts"
+  ]
+}

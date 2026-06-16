@@ -1,0 +1,29 @@
+<style>
+
+.collection-filters { padding: 15px 20px; }
+
+</style>
+
+
+<div class="collection-filters page-width">
+  <div style="background:#fafafa; padding:15px; border-radius:4px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+    <strong>Filters:</strong>
+    <select class="btn btn--secondary btn--small" style="background:#fff;"><option>In Stock</option><option>Out of Stock</option></select>
+    <select class="btn btn--secondary btn--small" style="background:#fff;"><option>Price: Under $50</option><option>Price: $50 to $100</option></select>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Filters",
+  "tag": "section",
+  "class": "shopify-section-collection-filters",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Filters"
+    }
+  ]
+}
+{% endschema %}

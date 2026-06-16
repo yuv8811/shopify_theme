@@ -1,0 +1,41 @@
+<style>
+
+.trust-badges { padding: 30px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.trust-badges__grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.trust-badges__badge {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+</style>
+
+
+<div class="trust-badges page-width text-center">
+  <div class="trust-badges__grid">
+    <div class="trust-badges__badge">💳 Secure Payments</div>
+    <div class="trust-badges__badge">🌱 100% Eco Sourced</div>
+    <div class="trust-badges__badge">✈️ Global Express Delivery</div>
+    <div class="trust-badges__badge">⭐ Rated 4.9 by Customers</div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Trust Badges",
+  "tag": "section",
+  "class": "shopify-section-trust-badges",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trust Badges"
+    }
+  ]
+}
+{% endschema %}

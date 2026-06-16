@@ -1,0 +1,37 @@
+<style>
+
+.section-video { padding: 40px 20px; }
+
+</style>
+
+
+<div class="section-video page-width">
+  <div class="video-container">
+    <video controls preload="metadata" style="width: 100%; border-radius: 6px;">
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Video player",
+  "tag": "section",
+  "class": "shopify-section-video",
+  "settings": [
+  {
+    "type": "text",
+    "id": "video_url",
+    "default": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "label": "Video URL"
+  }
+],
+  "presets": [
+    {
+      "name": "Video player"
+    }
+  ]
+}
+{% endschema %}

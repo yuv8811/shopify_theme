@@ -1,0 +1,55 @@
+<style>
+
+.size-chart__modal { position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+.size-chart__overlay { position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); }
+.size-chart__box { position: relative; background: #fff; padding: 30px; border-radius: 6px; max-width: 400px; width:100%; z-index: 1; }
+.size-chart__box table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+.size-chart__box th, .size-chart__box td { border: 1px solid #eee; padding: 10px; text-align: center; }
+
+</style>
+
+
+<div class="size-chart">
+  <button id="OpenSizeChart" class="btn btn--secondary" style="font-size:12px; padding:6px 12px;">Size Chart</button>
+  <div id="SizeChartModal" class="size-chart__modal" style="display:none;">
+    <div class="size-chart__overlay" id="CloseSizeChartOverlay"></div>
+    <div class="size-chart__box">
+      <h3>Size Guide</h3>
+      <table>
+        <thead><tr><th>Size</th><th>Bust (in)</th><th>Waist (in)</th></tr></thead>
+        <tbody>
+          <tr><td>S</td><td>34-35</td><td>26-27</td></tr>
+          <tr><td>M</td><td>36-37</td><td>28-29</td></tr>
+          <tr><td>L</td><td>38-40</td><td>30-32</td></tr>
+        </tbody>
+      </table>
+      <button id="CloseSizeChartBtn" class="btn btn--primary" style="margin-top:15px;">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('SizeChartModal');
+    if (modal) {
+      document.getElementById('OpenSizeChart').addEventListener('click', () => modal.style.display = 'flex');
+      const close = () => modal.style.display = 'none';
+      document.getElementById('CloseSizeChartOverlay').addEventListener('click', close);
+      document.getElementById('CloseSizeChartBtn').addEventListener('click', close);
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Size Chart Pop-up",
+  "tag": "section",
+  "class": "shopify-section-size-chart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Size Chart Pop-up"
+    }
+  ]
+}
+{% endschema %}

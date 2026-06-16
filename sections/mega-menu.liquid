@@ -1,0 +1,91 @@
+<style>
+
+.mega-menu {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.mega-menu__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.mega-menu__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.mega-menu__title a { color: #111111; }
+.mega-menu__link {
+  color: #555555;
+  font-size: 14px;
+  display: block;
+  padding: 5px 0;
+}
+.mega-menu__link:hover { color: #000000; text-decoration: none; }
+.mega-menu__promo img {
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+</style>
+
+
+<div class="mega-menu page-width">
+  <div class="mega-menu__grid">
+    {% for link in linklists[section.settings.menu].links %}
+      <div class="mega-menu__col">
+        <h4 class="mega-menu__title"><a href="{{ link.url }}">{{ link.title }}</a></h4>
+        {% if link.links != blank %}
+          <ul class="mega-menu__list list-unstyled">
+            {% for childlink in link.links %}
+              <li><a href="{{ childlink.url }}" class="mega-menu__link">{{ childlink.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+    {% if section.settings.promo_image %}
+      <div class="mega-menu__promo">
+        <img src="{{ section.settings.promo_image | image_url: width: 300 }}" alt="{{ section.settings.promo_heading }}" loading="lazy" width="300" height="200">
+        <h5>{{ section.settings.promo_heading }}</h5>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Mega Menu",
+  "tag": "section",
+  "class": "shopify-section-mega-menu",
+  "settings": [
+  {
+    "type": "link_list",
+    "id": "menu",
+    "label": "Menu"
+  },
+  {
+    "type": "image_picker",
+    "id": "promo_image",
+    "label": "Promo Image"
+  },
+  {
+    "type": "text",
+    "id": "promo_heading",
+    "default": "New Collection Out Now",
+    "label": "Promo Heading"
+  }
+],
+  "presets": [
+    {
+      "name": "Mega Menu"
+    }
+  ]
+}
+{% endschema %}

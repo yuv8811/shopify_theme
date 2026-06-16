@@ -1,0 +1,80 @@
+<style>
+
+.cookie-consent {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  z-index: 999;
+  padding: 15px 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+}
+.cookie-consent__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.cookie-consent__inner p {
+  margin: 0;
+  font-size: 14px;
+  color: #555555;
+  max-width: 80%;
+}
+.btn--small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+</style>
+
+
+<div id="CookieConsent" class="cookie-consent" style="display:none;">
+  <div class="cookie-consent__inner page-width">
+    <p>{{ section.settings.text }}</p>
+    <button id="AcceptCookies" class="btn btn--primary btn--small">{{ section.settings.accept_text }}</button>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookie_consent_accepted')) {
+      const el = document.getElementById('CookieConsent');
+      if (el) {
+        el.style.display = 'block';
+        document.getElementById('AcceptCookies').addEventListener('click', () => {
+          localStorage.setItem('cookie_consent_accepted', 'true');
+          el.style.display = 'none';
+        });
+      }
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Cookie Consent",
+  "tag": "section",
+  "class": "shopify-section-cookie-consent",
+  "settings": [
+  {
+    "type": "text",
+    "id": "text",
+    "default": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.",
+    "label": "Message Text"
+  },
+  {
+    "type": "text",
+    "id": "accept_text",
+    "default": "Accept",
+    "label": "Accept Button"
+  }
+],
+  "presets": [
+    {
+      "name": "Cookie Consent"
+    }
+  ]
+}
+{% endschema %}

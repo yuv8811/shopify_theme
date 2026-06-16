@@ -1,0 +1,38 @@
+<style>
+
+.related-products { padding: 40px 20px; border-top: 1px solid #eee; }
+
+</style>
+
+
+<div class="related-products page-width">
+  <h3>Related Products</h3>
+  <div class="product-grid">
+    {% for i in (1..4) %}
+      <div class="product-card">
+        <a href="#">
+          <div class="product-card__image-wrapper">
+            <img src="https://picsum.photos/300/300?random={{ i | plus: 5 }}" alt="related" loading="lazy" width="300" height="300" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <h3 class="product-card__title">Related Style {{ i }}</h3>
+          <div class="product-card__price">$39.00</div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Related Products Grid",
+  "tag": "section",
+  "class": "shopify-section-related-products",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Related Products Grid"
+    }
+  ]
+}
+{% endschema %}

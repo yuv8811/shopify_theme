@@ -1,0 +1,27 @@
+{
+  "name": "Index",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar"
+    },
+    "hero-banner": {
+      "type": "hero-banner"
+    },
+    "collection-list": {
+      "type": "collection-list"
+    },
+    "featured-collection": {
+      "type": "featured-collection"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "hero-banner",
+    "collection-list",
+    "featured-collection",
+    "newsletter"
+  ]
+}
