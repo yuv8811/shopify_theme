@@ -1,0 +1,23 @@
+<article class="article-page page-width">
+  <header class="article-header text-center">
+    <h1>{{ article.title }}</h1>
+    <span class="article-meta">{{ article.published_at | date: '%B %d, %Y' }} &bull; {{ article.author }}</span>
+  </header>
+
+  {%- if article.image -%}
+    <div class="article-featured-image text-center">
+      <img src="{{ article.image | image_url: width: 800 }}" 
+           alt="{{ article.image.alt | escape }}" 
+           width="800" 
+           height="{{ 800 | divided_by: article.image.aspect_ratio | round }}">
+    </div>
+  {%- endif -%}
+
+  <div class="article-content rte">
+    {{ article.content }}
+  </div>
+
+  <footer class="article-footer">
+    <a href="{{ blog.url }}" class="btn btn--secondary">&larr; Back to {{ blog.title }}</a>
+  </footer>
+</article>

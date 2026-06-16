@@ -1,0 +1,81 @@
+<div class="featured-collection-section page-width">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="section-title text-center">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+  {%- assign limit = section.settings.limit -%}
+
+  <div class="product-grid">
+    {%- if collection != blank and collection.all_products_count > 0 -%}
+      {%- for product in collection.products limit: limit -%}
+        <div class="product-card">
+          <a href="{{ product.url }}" class="product-card__link">
+            <div class="product-card__image-wrapper">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 300 }}" 
+                     alt="{{ product.featured_image.alt | escape }}" 
+                     loading="lazy" 
+                     width="300"
+                     height="{{ 300 | divided_by: product.featured_image.aspect_ratio | round }}">
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <h3 class="product-card__title">{{ product.title }}</h3>
+            <div class="product-card__price">
+              <span>{{ product.price | money }}</span>
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..limit) -%}
+        <div class="product-card placeholder-card">
+          <div class="product-card__image-wrapper">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <h3 class="product-card__title">Example Product Title</h3>
+          <div class="product-card__price">
+            <span>$19.99</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "class": "shopify-section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Featured Collection",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to Show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

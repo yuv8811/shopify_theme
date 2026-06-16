@@ -1,0 +1,36 @@
+<footer class="site-footer page-width">
+  <div class="footer-container">
+    <div class="footer-col copyright-info">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+
+    {%- if section.settings.menu != blank -%}
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <ul class="footer-links-list list-unstyled">
+          {%- for link in linklists[section.settings.menu].links -%}
+            <li class="footer-link-item">
+              <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "shopify-section-footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "footer",
+      "label": "Footer Menu",
+      "info": "Choose the menu to display in the footer."
+    }
+  ]
+}
+{% endschema %}

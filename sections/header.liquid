@@ -1,0 +1,46 @@
+<header class="site-header page-width">
+  <div class="header-container">
+    <!-- Logo / Shop Name -->
+    <div class="header-logo">
+      <a href="{{ routes.root_url }}" class="shop-name-link">{{ shop.name }}</a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="header-nav" aria-label="Main Navigation">
+      <ul class="nav-list list-unstyled">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li class="nav-item">
+            <a href="{{ link.url }}" class="nav-link {% if link.active %}active{% endif %}">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <!-- Header Actions (Cart, Search) -->
+    <div class="header-actions">
+      <a href="{{ routes.search_url }}" class="header-action-link" aria-label="Search">
+        Search
+      </a>
+      <a href="{{ routes.cart_url }}" class="header-action-link cart-link" aria-label="Cart">
+        Cart (<span id="CartCount">{{ cart.item_count }}</span>)
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "header",
+  "class": "shopify-section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Navigation Menu",
+      "info": "Choose the navigation menu to display in the header."
+    }
+  ]
+}
+{% endschema %}

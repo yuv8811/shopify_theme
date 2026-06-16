@@ -1,0 +1,12 @@
+{
+  "current": {
+    "color_primary": "#111111",
+    "color_bg": "#ffffff"
+  },
+  "presets": {
+    "Default": {
+      "color_primary": "#111111",
+      "color_bg": "#ffffff"
+    }
+  }
+}

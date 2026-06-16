@@ -1,0 +1,28 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Basic Scratch Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Antigravity",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://support.shopify.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Brand Color",
+        "default": "#111111",
+        "info": "Used for buttons and primary headers."
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background Color",
+        "default": "#ffffff"
+      }
+    ]
+  }
+]
