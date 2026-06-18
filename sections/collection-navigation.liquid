@@ -1,0 +1,29 @@
+<style>
+
+.collection-nav { padding: 15px 20px; }
+
+</style>
+
+
+<div class="collection-nav page-width">
+  <div style="display:flex; gap:15px; flex-wrap:wrap;">
+    {% for col in collections %}
+      <a href="{{ col.url }}" class="btn btn--secondary btn--small">{{ col.title }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection Navigation Links",
+  "tag": "section",
+  "class": "shopify-section-collection-navigation",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Navigation Links"
+    }
+  ]
+}
+{% endschema %}

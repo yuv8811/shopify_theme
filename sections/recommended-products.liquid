@@ -1,0 +1,43 @@
+<style>
+
+.recommended-products { padding: 40px 20px; }
+
+</style>
+
+
+<div class="recommended-products page-width">
+  <h2 class="text-center">{{ section.settings.heading }}</h2>
+  <div class="product-grid">
+    {% for i in (1..4) %}
+      <div class="product-card placeholder-card">
+        <div class="product-card__image-wrapper" style="background:#eee; height:250px;">
+          <img src="https://picsum.photos/300/300?random={{ i }}" alt="Recommendation" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h3 class="product-card__title">Recommended Product {{ i }}</h3>
+        <div class="product-card__price">$29.99</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Recommended Products",
+  "tag": "section",
+  "class": "shopify-section-recommended-products",
+  "settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "You May Also Like",
+    "label": "Heading"
+  }
+],
+  "presets": [
+    {
+      "name": "Recommended Products"
+    }
+  ]
+}
+{% endschema %}

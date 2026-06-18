@@ -1,0 +1,47 @@
+<style>
+
+.product-accordion { margin-top: 20px; border-top: 1px solid #eee; }
+.product-accordion__item { border-bottom: 1px solid #eee; padding: 12px 0; }
+.product-accordion__title { font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+.product-accordion__title::after { content: '+'; }
+.product-accordion__item.active .product-accordion__title::after { content: '-'; }
+.product-accordion__content { display: none; margin-top: 10px; color: #666; font-size: 14px; }
+.product-accordion__item.active .product-accordion__content { display: block; }
+
+</style>
+
+
+<div class="product-accordion">
+  <div class="product-accordion__item">
+    <h4 class="product-accordion__title">Materials Used</h4>
+    <div class="product-accordion__content"><p>Organic Cotton, Recycled Polyester, Sustainable dyes.</p></div>
+  </div>
+  <div class="product-accordion__item">
+    <h4 class="product-accordion__title">Care Instructions</h4>
+    <div class="product-accordion__content"><p>Machine wash cold. Do not tumble dry.</p></div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.product-accordion__title').forEach(t => {
+      t.addEventListener('click', () => {
+        t.parentElement.classList.toggle('active');
+      });
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Product Details Accordion",
+  "tag": "section",
+  "class": "shopify-section-product-accordion",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Details Accordion"
+    }
+  ]
+}
+{% endschema %}

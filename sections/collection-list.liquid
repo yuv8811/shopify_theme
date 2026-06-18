@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="section">
   <div class="page-width">
     <div class="section-header{% if section.settings.center_text %} section-header--center{% endif %}">
@@ -63,6 +64,78 @@
     {% endif %}
   </div>
 </section>
+=======
+<style>
+
+.collection-list {
+  padding: 40px 20px;
+}
+.collection-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+.collection-list__card {
+  text-align: center;
+}
+.collection-list__img-wrapper {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f7f7f7;
+  margin-bottom: 10px;
+}
+.collection-list__img-wrapper img {
+  width:100%; height:100%; object-fit: cover;
+  transition: transform 0.3s;
+}
+.collection-list__img-wrapper:hover img {
+  transform: scale(1.05);
+}
+.collection-list__img-placeholder {
+  width:100%; height:100%;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+.collection-list__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+</style>
+
+
+<div class="collection-list page-width">
+  <h2 class="text-center">{{ section.settings.heading }}</h2>
+  <div class="collection-list__grid">
+    {% for col in collections limit: 4 %}
+      <div class="collection-list__card">
+        <a href="{{ col.url }}">
+          <div class="collection-list__img-wrapper">
+            {% if col.featured_image %}
+              <img src="{{ col.featured_image | image_url: width: 300 }}" alt="{{ col.title }}" loading="lazy" width="300" height="300">
+            {% else %}
+              <div class="collection-list__img-placeholder"></div>
+            {% endif %}
+          </div>
+          <h3 class="collection-list__title">{{ col.title }}</h3>
+        </a>
+      </div>
+    {% else %}
+      {% for i in (1..4) %}
+        <div class="collection-list__card">
+          <div class="collection-list__img-wrapper">
+            <div class="collection-list__img-placeholder" style="background:#ddd;"></div>
+          </div>
+          <h3 class="collection-list__title">Collection Title {{ i }}</h3>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
 
 {% schema %}
 {
@@ -70,6 +143,7 @@
   "tag": "section",
   "class": "shopify-section-collection-list",
   "settings": [
+<<<<<<< HEAD
     {
       "type": "text",
       "id": "eyebrow",
@@ -142,6 +216,18 @@
         { "type": "collection" },
         { "type": "collection" }
       ]
+=======
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "Shop by Collection",
+    "label": "Heading"
+  }
+],
+  "presets": [
+    {
+      "name": "Collection List"
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
     }
   ]
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="section">
   <div class="page-width">
     <div class="collection-banner__shell">
@@ -34,12 +35,29 @@
     </div>
   </div>
 </section>
+=======
+<style>
+
+.collection-banner h1 { margin-bottom: 10px; }
+
+</style>
+
+
+<div class="collection-banner text-center" style="background:#f9f9f9; padding:50px 20px;">
+  <div class="page-width">
+    <h1>{{ collection.title | default: 'Collection Title' }}</h1>
+    <p>{{ collection.description | default: 'Browse our exquisite range of catalog items selected for quality.' }}</p>
+  </div>
+</div>
+
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
 
 {% schema %}
 {
   "name": "Collection Banner",
   "tag": "section",
   "class": "shopify-section-collection-banner",
+<<<<<<< HEAD
   "settings": [
     {
       "type": "text",
@@ -66,6 +84,9 @@
       "default": true
     }
   ],
+=======
+  "settings": [],
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   "presets": [
     {
       "name": "Collection Banner"

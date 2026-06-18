@@ -1,5 +1,6 @@
 {
   "current": {
+<<<<<<< HEAD
     "seo_default_description": "A polished, high-converting Shopify storefront with strong performance, SEO foundations, and flexible sections for merchandising.",
     "color_primary": "#163534",
     "color_accent": "#be6a4f",
@@ -29,6 +30,15 @@
       "card_radius": 24,
       "button_radius": 999,
       "enable_sticky_header": true
+=======
+    "color_primary": "#111111",
+    "color_bg": "#ffffff"
+  },
+  "presets": {
+    "Default": {
+      "color_primary": "#111111",
+      "color_bg": "#ffffff"
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
     }
   }
 }

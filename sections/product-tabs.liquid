@@ -1,0 +1,56 @@
+<style>
+
+.product-tabs { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+.product-tabs__nav { display: flex; gap: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+.product-tabs__btn { background: none; border: none; font-size: 16px; font-weight: 600; cursor: pointer; color: #888; }
+.product-tabs__btn.active { color: #111; border-bottom: 2px solid #111; }
+.product-tabs__content { display: none; }
+.product-tabs__content.active { display: block; }
+
+</style>
+
+
+<div class="product-tabs" id="ProductTabs">
+  <div class="product-tabs__nav">
+    <button class="product-tabs__btn active" data-tab="description">Description</button>
+    <button class="product-tabs__btn" data-tab="shipping">Shipping Info</button>
+  </div>
+  <div class="product-tabs__content active" id="Tab-description">
+    <p>{{ product.description | default: 'High quality items built for endurance and luxury fashion trends.' }}</p>
+  </div>
+  <div class="product-tabs__content" id="Tab-shipping">
+    <p>Orders are shipped in eco-friendly packaging. Delivery timelines range from 2 to 5 business days depending on geography.</p>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('ProductTabs');
+    if (nav) {
+      const btns = nav.querySelectorAll('.product-tabs__btn');
+      const contents = nav.querySelectorAll('.product-tabs__content');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('Tab-' + btn.getAttribute('data-tab')).classList.add('active');
+        });
+      });
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Product Details Tabs",
+  "tag": "section",
+  "class": "shopify-section-product-tabs",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Details Tabs"
+    }
+  ]
+}
+{% endschema %}

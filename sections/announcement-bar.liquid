@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="announcement-bar" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
   <div class="page-width">
     <div class="announcement-bar__inner">
@@ -9,12 +10,36 @@
   </div>
 </div>
 
+=======
+<style>
+
+.announcement-bar {
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.announcement-bar__message {
+  margin: 0;
+}
+
+</style>
+
+
+<div class="announcement-bar" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};">
+  <p class="announcement-bar__message">{{ section.settings.text }}</p>
+</div>
+
+
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
 {% schema %}
 {
   "name": "Announcement Bar",
   "tag": "section",
   "class": "shopify-section-announcement-bar",
   "settings": [
+<<<<<<< HEAD
     {
       "type": "text",
       "id": "text",
@@ -45,6 +70,27 @@
       "label": "Text color"
     }
   ],
+=======
+  {
+    "type": "text",
+    "id": "text",
+    "default": "Welcome to our store! Free shipping on orders over $50.",
+    "label": "Announcement text"
+  },
+  {
+    "type": "color",
+    "id": "bg_color",
+    "default": "#111111",
+    "label": "Background Color"
+  },
+  {
+    "type": "color",
+    "id": "text_color",
+    "default": "#ffffff",
+    "label": "Text Color"
+  }
+],
+>>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   "presets": [
     {
       "name": "Announcement Bar"

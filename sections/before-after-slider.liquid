@@ -1,0 +1,56 @@
+<style>
+
+.before-after-slider { padding: 40px 20px; }
+.before-after-slider__container { position: relative; width: 100%; max-width: 800px; margin: 30px auto; overflow: hidden; height: 400px; }
+.before-after-slider__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.before-after-slider__resize { position: absolute; top:0; left:0; width: 50%; height:100%; overflow:hidden; border-right: 2px solid #fff; }
+.before-after-slider__handle { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 2px solid #ccc; transform: translate(-50%, -50%); cursor: ew-resize; }
+
+</style>
+
+
+<div class="before-after-slider page-width">
+  <h2 class="text-center">Before / After Showcase</h2>
+  <div class="before-after-slider__container" id="BaSlider">
+    <img class="before-after-slider__img before" src="https://picsum.photos/800/400?random=20" alt="Before" loading="lazy" width="800" height="400">
+    <div class="before-after-slider__resize" id="BaResize">
+      <img class="before-after-slider__img after" src="https://picsum.photos/800/400?random=21" alt="After" loading="lazy" width="800" height="400">
+    </div>
+    <span class="before-after-slider__handle" id="BaHandle"></span>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('BaSlider');
+    const resize = document.getElementById('BaResize');
+    const handle = document.getElementById('BaHandle');
+    if (container && resize && handle) {
+      function move(e) {
+        let x = e.clientX || (e.touches && e.touches[0].clientX);
+        let rect = container.getBoundingClientRect();
+        let position = ((x - rect.left) / rect.width) * 100;
+        if (position >= 0 && position <= 100) {
+          resize.style.width = position + '%';
+          handle.style.left = position + '%';
+        }
+      }
+      container.addEventListener('mousemove', move);
+      container.addEventListener('touchmove', move);
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Before/After Slider",
+  "tag": "section",
+  "class": "shopify-section-before-after-slider",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Before/After Slider"
+    }
+  ]
+}
+{% endschema %}
