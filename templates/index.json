@@ -1,36 +1,16 @@
-<<<<<<< HEAD
 {
   "name": "Index",
-=======
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
       "settings": {
-<<<<<<< HEAD
         "text": "Launch with a faster, cleaner, more flexible Shopify storefront foundation.",
         "link_label": "Explore the catalog"
-=======
-        "text": "Welcome to our store! Free shipping on orders over $50.",
-        "bg_color": "#111111",
-        "text_color": "#ffffff"
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
       }
     },
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-<<<<<<< HEAD
         "eyebrow": "Conversion-first Shopify theme",
         "heading": "A configurable storefront built for speed, SEO, and serious merchandising.",
         "text": "Use this homepage structure as a polished starting point, then tune every key area in the theme editor without rewriting templates.",
@@ -104,38 +84,6 @@
     },
     "newsletter": {
       "type": "newsletter"
-=======
-        "heading": "Modern Premium Theme",
-        "text": "Discover our sleek products designed for lifestyle.",
-        "btn_label": "Shop Now",
-        "btn_link": ""
-      }
-    },
-    "collection-list": {
-      "type": "collection-list",
-      "settings": {
-        "heading": "Shop by Collection"
-      }
-    },
-    "featured-collection": {
-      "type": "featured-collection",
-      "settings": {
-        "heading": "Featured Collection",
-        "collection": "",
-        "limit": 4
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "heading": "Subscribe to our newsletter"
-      }
-    },
-    "before_after_slider_xRUUkH": {
-      "type": "before-after-slider",
-      "name": "Before/After Slider",
-      "settings": {}
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
     }
   },
   "order": [
@@ -143,12 +91,7 @@
     "hero-banner",
     "collection-list",
     "featured-collection",
-<<<<<<< HEAD
     "rich-text",
     "newsletter"
-=======
-    "newsletter",
-    "before_after_slider_xRUUkH"
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   ]
 }

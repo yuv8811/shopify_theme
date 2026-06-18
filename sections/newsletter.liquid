@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <section class="section">
   <div class="page-width">
     <div class="newsletter-panel text-center">
@@ -36,26 +35,6 @@
     </div>
   </div>
 </section>
-=======
-<style>
-
-.newsletter { padding: 60px 20px; max-width: 600px; }
-.newsletter__form { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
-.newsletter__input { padding: 12px; border: 1px solid #ccc; border-radius: 4px; width: 60%; font-size: 15px; }
-
-</style>
-
-
-<div class="newsletter text-center page-width">
-  <h2>{{ section.settings.heading }}</h2>
-  <p>Signup for deals, new arrivals, and updates.</p>
-  <form action="/contact#contact_form" method="post" class="newsletter__form">
-    <input type="email" placeholder="Your email address" required name="contact[email]" class="newsletter__input">
-    <button type="submit" class="btn btn--primary">Subscribe</button>
-  </form>
-</div>
-
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
 
 {% schema %}
 {
@@ -63,7 +42,6 @@
   "tag": "section",
   "class": "shopify-section-newsletter",
   "settings": [
-<<<<<<< HEAD
     {
       "type": "text",
       "id": "eyebrow",
@@ -101,15 +79,6 @@
       "label": "Success message"
     }
   ],
-=======
-  {
-    "type": "text",
-    "id": "heading",
-    "default": "Subscribe to our newsletter",
-    "label": "Heading"
-  }
-],
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   "presets": [
     {
       "name": "Newsletter Signup"

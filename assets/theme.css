@@ -15,8 +15,9 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background:
-    radial-gradient(circle at top left, rgba(190, 106, 79, 0.08), transparent 30%),
-    linear-gradient(180deg, #fbf8f2 0%, var(--color-background) 100%);
+    radial-gradient(circle at top left, rgba(212, 111, 77, 0.14), transparent 28%),
+    radial-gradient(circle at right 15%, rgba(18, 59, 56, 0.08), transparent 24%),
+    linear-gradient(180deg, #fcf8f1 0%, var(--color-background) 100%);
 }
 
 img,
@@ -65,6 +66,7 @@ summary {
   display: grid;
   gap: 0.75rem;
   margin-bottom: 2rem;
+  max-width: 52rem;
 }
 
 .section-header--center {
@@ -109,6 +111,13 @@ h3 {
 
 p {
   margin: 0;
+}
+
+.section-header > p:last-child,
+.section-header .muted,
+.hero-banner__copy,
+.newsletter-panel > .muted {
+  max-width: 44rem;
 }
 
 .rte,
@@ -175,12 +184,17 @@ p {
 .btn--primary {
   background: var(--color-primary);
   color: #fff;
+  box-shadow: 0 0.9rem 1.8rem rgba(18, 59, 56, 0.16);
 }
 
 .btn--secondary {
   background: transparent;
   color: var(--color-text);
   border-color: var(--color-border);
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .btn--ghost {
@@ -269,6 +283,7 @@ textarea.field {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   text-align: center;
 }
@@ -277,8 +292,9 @@ textarea.field {
   position: relative;
   z-index: 25;
   border-bottom: 1px solid rgba(32, 31, 28, 0.08);
-  background: rgba(251, 248, 242, 0.85);
+  background: rgba(252, 248, 241, 0.88);
   backdrop-filter: blur(14px);
+  box-shadow: 0 0.5rem 1.2rem rgba(18, 20, 18, 0.03);
 }
 
 .sticky-header-enabled .site-header {
@@ -312,7 +328,7 @@ textarea.field {
 
 .header__brand-name {
   font-family: "Iowan Old Style", Georgia, serif;
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: 700;
 }
 
@@ -411,7 +427,7 @@ textarea.field {
   padding: 0.75rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.72);
   font-weight: 600;
 }
 
@@ -475,6 +491,10 @@ textarea.field {
   max-width: 44rem;
 }
 
+.hero-banner__inner h1 {
+  max-width: 14ch;
+}
+
 .hero-banner__copy {
   font-size: clamp(1.08rem, 1.6vw, 1.2rem);
   color: rgba(255, 255, 255, 0.84);
@@ -494,6 +514,7 @@ textarea.field {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
 }
 
 .product-grid,
@@ -587,6 +608,15 @@ textarea.field {
   display: grid;
   gap: 0.55rem;
   padding: 1.2rem;
+}
+
+.product-card__title,
+.article-card__title,
+.search-card__title,
+.collection-list__overlay h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.15;
 }
 
 .product-card__vendor,
@@ -727,6 +757,14 @@ textarea.field {
   display: grid;
   gap: 1rem;
   padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+.product-info-panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow-card);
 }
 
 .collection-banner__image {
@@ -878,6 +916,10 @@ textarea.field {
   font-weight: 700;
 }
 
+.product-meta h1 {
+  font-size: clamp(2rem, 3.4vw, 3.15rem);
+}
+
 .product-meta__compare {
   color: var(--color-muted);
   text-decoration: line-through;
@@ -968,6 +1010,10 @@ textarea.field {
   margin: 0 auto;
 }
 
+.article-shell h1 {
+  font-size: clamp(2.2rem, 4vw, 3.7rem);
+}
+
 .article-hero {
   display: grid;
   gap: 1.25rem;
@@ -1023,6 +1069,13 @@ textarea.field {
 
 .search-card__title {
   font-size: 1.2rem;
+}
+
+.cart-item h2,
+.footer h3,
+.main-blog h2,
+.main-cart h2 {
+  font-size: 1.1rem;
 }
 
 .contact-form__layout,
@@ -1144,6 +1197,16 @@ textarea.field {
   background: rgba(255, 255, 255, 0.45);
 }
 
+.page-shell,
+.article-shell,
+.collection-banner__content,
+.newsletter-panel,
+.contact-form__panel,
+.cart-summary,
+.product-info-panel {
+  backdrop-filter: blur(10px);
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -1165,6 +1228,11 @@ textarea.field {
 
   .product-main {
     grid-template-columns: minmax(0, 1.1fr) minmax(24rem, 0.9fr);
+  }
+
+  .product-info-panel {
+    position: sticky;
+    top: 6rem;
   }
 
   .cart-item {
@@ -1210,11 +1278,19 @@ textarea.field {
   .footer__layout {
     grid-template-columns: 1fr 1fr;
   }
+
+  .hero-banner__inner h1 {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 749px) {
   .page-width {
     width: min(100% - 1.25rem, var(--page-width));
+  }
+
+  .section {
+    padding: clamp(3rem, 8vw, 4.5rem) 0;
   }
 
   .newsletter-form__row,
@@ -1226,8 +1302,26 @@ textarea.field {
     display: grid;
   }
 
+  .announcement-bar__inner,
+  .button-row {
+    justify-content: center;
+  }
+
+  .header {
+    gap: 0.75rem;
+    min-height: 4.5rem;
+  }
+
+  .header__brand-tagline {
+    display: none;
+  }
+
   .header__actions span:not(.header__action-count) {
     display: none;
+  }
+
+  .header__action {
+    padding: 0.65rem 0.8rem;
   }
 
   .product-grid,
@@ -1242,6 +1336,40 @@ textarea.field {
 
   .hero-banner {
     min-height: auto;
+    padding-top: 5.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-banner__inner,
+  .image-banner__content {
+    gap: 1rem;
+  }
+
+  .product-gallery__thumbs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .product-info-panel,
+  .page-shell,
+  .article-shell,
+  .cart-summary,
+  .newsletter-panel,
+  .contact-form__panel {
+    padding: 1.25rem;
+  }
+
+  .cart-item__image img {
+    max-width: 100%;
+  }
+
+  .breadcrumbs {
+    row-gap: 0.2rem;
+  }
+
+  .footer__brand,
+  .footer__menu,
+  .footer__social {
+    gap: 0.55rem;
   }
 }
 

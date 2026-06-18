@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <section class="section">
   <div class="page-width">
     <div class="page-shell"{% if section.settings.alignment == 'center' %} style="text-align:center; max-width: 52rem; margin-inline:auto;"{% else %} style="max-width: 52rem;"{% endif %}>
@@ -15,25 +14,6 @@
     </div>
   </div>
 </section>
-=======
-<style>
-
-.rich-text {
-  padding: 60px 20px;
-  max-width: 800px;
-}
-.rich-text h2 { font-size: 30px; margin-bottom: 20px; }
-.rich-text__body { font-size: 16px; color: #555; line-height: 1.6; }
-
-</style>
-
-
-<div class="rich-text text-center page-width">
-  <h2>{{ section.settings.heading }}</h2>
-  <div class="rich-text__body">{{ section.settings.text }}</div>
-</div>
-
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
 
 {% schema %}
 {
@@ -41,7 +21,6 @@
   "tag": "section",
   "class": "shopify-section-rich-text",
   "settings": [
-<<<<<<< HEAD
     {
       "type": "text",
       "id": "eyebrow",
@@ -81,21 +60,6 @@
       "label": "Button link"
     }
   ],
-=======
-  {
-    "type": "text",
-    "id": "heading",
-    "default": "Talk about your brand",
-    "label": "Heading"
-  },
-  {
-    "type": "textarea",
-    "id": "text",
-    "default": "Share store details, promotions, or brand stories with your customers.",
-    "label": "Text"
-  }
-],
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
   "presets": [
     {
       "name": "Rich Text"

@@ -1,44 +1,34 @@
 {
   "current": {
-<<<<<<< HEAD
     "seo_default_description": "A polished, high-converting Shopify storefront with strong performance, SEO foundations, and flexible sections for merchandising.",
-    "color_primary": "#163534",
-    "color_accent": "#be6a4f",
-    "color_background": "#f6f1e8",
-    "color_surface": "#ffffff",
-    "color_text": "#201f1c",
-    "color_muted": "#6f6a63",
-    "color_border": "#d7d0c4",
-    "container_width": 1240,
-    "section_spacing": 72,
-    "card_radius": 24,
+    "color_primary": "#123b38",
+    "color_accent": "#d46f4d",
+    "color_background": "#f8f1e7",
+    "color_surface": "#fffdf8",
+    "color_text": "#181714",
+    "color_muted": "#6f675e",
+    "color_border": "#d8cfbf",
+    "container_width": 1280,
+    "section_spacing": 84,
+    "card_radius": 28,
     "button_radius": 999,
     "enable_sticky_header": true
   },
   "presets": {
     "Default": {
       "seo_default_description": "A polished, high-converting Shopify storefront with strong performance, SEO foundations, and flexible sections for merchandising.",
-      "color_primary": "#163534",
-      "color_accent": "#be6a4f",
-      "color_background": "#f6f1e8",
-      "color_surface": "#ffffff",
-      "color_text": "#201f1c",
-      "color_muted": "#6f6a63",
-      "color_border": "#d7d0c4",
-      "container_width": 1240,
-      "section_spacing": 72,
-      "card_radius": 24,
+      "color_primary": "#123b38",
+      "color_accent": "#d46f4d",
+      "color_background": "#f8f1e7",
+      "color_surface": "#fffdf8",
+      "color_text": "#181714",
+      "color_muted": "#6f675e",
+      "color_border": "#d8cfbf",
+      "container_width": 1280,
+      "section_spacing": 84,
+      "card_radius": 28,
       "button_radius": 999,
       "enable_sticky_header": true
-=======
-    "color_primary": "#111111",
-    "color_bg": "#ffffff"
-  },
-  "presets": {
-    "Default": {
-      "color_primary": "#111111",
-      "color_bg": "#ffffff"
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
     }
   }
 }

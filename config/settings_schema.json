@@ -1,9 +1,8 @@
 [
   {
     "name": "theme_info",
-<<<<<<< HEAD
     "theme_name": "Aperture Commerce",
-    "theme_version": "2.0.0",
+    "theme_version": "2.1.0",
     "theme_author": "Antigravity",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com"
@@ -30,59 +29,49 @@
     ]
   },
   {
-=======
-    "theme_name": "Basic Scratch Theme",
-    "theme_version": "1.0.0",
-    "theme_author": "Antigravity",
-    "theme_documentation_url": "https://help.shopify.com",
-    "theme_support_url": "https://support.shopify.com"
-  },
-  {
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
     "name": "Colors",
     "settings": [
       {
         "type": "color",
         "id": "color_primary",
-<<<<<<< HEAD
         "label": "Primary color",
-        "default": "#163534"
+        "default": "#123b38"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent color",
-        "default": "#be6a4f"
+        "default": "#d46f4d"
       },
       {
         "type": "color",
         "id": "color_background",
         "label": "Background color",
-        "default": "#f6f1e8"
+        "default": "#f8f1e7"
       },
       {
         "type": "color",
         "id": "color_surface",
         "label": "Surface color",
-        "default": "#ffffff"
+        "default": "#fffdf8"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text color",
-        "default": "#201f1c"
+        "default": "#181714"
       },
       {
         "type": "color",
         "id": "color_muted",
         "label": "Muted text color",
-        "default": "#6f6a63"
+        "default": "#6f675e"
       },
       {
         "type": "color",
         "id": "color_border",
         "label": "Border color",
-        "default": "#d7d0c4"
+        "default": "#d8cfbf"
       }
     ]
   },
@@ -96,7 +85,7 @@
         "min": 1080,
         "max": 1600,
         "step": 20,
-        "default": 1240,
+        "default": 1280,
         "unit": "px"
       },
       {
@@ -104,9 +93,9 @@
         "id": "section_spacing",
         "label": "Vertical section spacing",
         "min": 40,
-        "max": 120,
+        "max": 140,
         "step": 4,
-        "default": 72,
+        "default": 84,
         "unit": "px"
       },
       {
@@ -114,9 +103,9 @@
         "id": "card_radius",
         "label": "Card corner radius",
         "min": 0,
-        "max": 36,
+        "max": 40,
         "step": 2,
-        "default": 24,
+        "default": 28,
         "unit": "px"
       },
       {
@@ -164,17 +153,6 @@
         "type": "url",
         "id": "social_x_link",
         "label": "X / Twitter"
-=======
-        "label": "Primary Brand Color",
-        "default": "#111111",
-        "info": "Used for buttons and primary headers."
-      },
-      {
-        "type": "color",
-        "id": "color_bg",
-        "label": "Background Color",
-        "default": "#ffffff"
->>>>>>> 69e67f84842f7704d36389c377b46414a52de1d1
       }
     ]
   }
