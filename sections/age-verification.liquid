@@ -1,0 +1,91 @@
+<style>
+
+.age-verification {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: #ffffff;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.age-verification__box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 450px;
+  width: 100%;
+}
+.age-verification__box h2 {
+  margin-bottom: 15px;
+}
+.age-verification__box p {
+  color: #666;
+  margin-bottom: 25px;
+}
+.age-verification__buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+</style>
+
+
+<div id="AgeVerification" class="age-verification" style="display:none;">
+  <div class="age-verification__box text-center">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+    <div class="age-verification__buttons">
+      <button id="AgeVerifyYes" class="btn btn--primary">I am 18 or older</button>
+      <button id="AgeVerifyNo" class="btn btn--secondary">Exit</button>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('age_verified')) {
+      const el = document.getElementById('AgeVerification');
+      if (el) {
+        el.style.display = 'flex';
+        document.getElementById('AgeVerifyYes').addEventListener('click', () => {
+          localStorage.setItem('age_verified', 'true');
+          el.style.display = 'none';
+        });
+        document.getElementById('AgeVerifyNo').addEventListener('click', () => {
+          window.location.href = 'https://google.com';
+        });
+      }
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Age Verification",
+  "tag": "section",
+  "class": "shopify-section-age-verification",
+  "settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "Age Verification",
+    "label": "Heading"
+  },
+  {
+    "type": "text",
+    "id": "text",
+    "default": "You must be 18 years or older to enter this site.",
+    "label": "Description"
+  }
+],
+  "presets": [
+    {
+      "name": "Age Verification"
+    }
+  ]
+}
+{% endschema %}

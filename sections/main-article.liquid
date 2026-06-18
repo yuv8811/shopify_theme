@@ -1,0 +1,96 @@
+<section class="section">
+  <div class="page-width">
+    <article class="article-shell">
+      <div class="article-hero">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span>/</span>
+          <a href="{{ blog.url }}">{{ blog.title }}</a>
+          <span>/</span>
+          <span>{{ article.title }}</span>
+        </nav>
+
+        {% if section.settings.show_tags and article.tags != blank %}
+          <div class="article-tags">
+            {% for tag in article.tags %}
+              <span class="article-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <h1>{{ article.title }}</h1>
+        <p class="article-card__meta">
+          {% if section.settings.show_date %}{{ article.published_at | date: '%B %d, %Y' }}{% endif %}
+          {% if section.settings.show_author and article.author != blank %} · {{ article.author }}{% endif %}
+        </p>
+
+        {% if article.image %}
+          <div class="article-hero__image">
+            {{
+              article.image
+              | image_url: width: 1800
+              | image_tag:
+                widths: '720,960,1200,1600,1800',
+                sizes: '100vw',
+                loading: 'eager',
+                alt: article.title | escape
+            }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="article-content rte">{{ article.content }}</div>
+    </article>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ article.title | json }},
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+      "author": {
+        "@type": "Person",
+        "name": {{ article.author | json }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      },
+      "mainEntityOfPage": {{ shop.url | append: article.url | json }}{% if article.image %},
+      "image": {{ article.image | image_url: width: 1600 | prepend: 'https:' | json }}{% endif %}
+    }
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Main Article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show published date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show tags",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Article"
+    }
+  ]
+}
+{% endschema %}

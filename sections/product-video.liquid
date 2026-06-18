@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-header">
+      <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p class="muted">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.video != blank %}
+      <div class="page-shell">
+        {{ section.settings.video | video_tag: controls: true, image_size: '1400x' }}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>Add a product or brand video</h3>
+        <p>Use Shopify-hosted video media here instead of hardcoded remote MP4 files.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Promo Video",
+  "tag": "section",
+  "class": "shopify-section-product-video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Visual storytelling"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Show the product in motion"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Use Shopify-hosted video for richer merchandising without adding third-party asset risk."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Promo Video"
+    }
+  ]
+}
+{% endschema %}

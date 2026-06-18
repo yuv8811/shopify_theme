@@ -1,0 +1,72 @@
+<style>
+
+.search-drawer {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #ffffff;
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.search-drawer.active {
+  transform: translateY(0);
+}
+.search-drawer__content {
+  padding: 20px;
+}
+.search-drawer__form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.search-drawer__input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.search-drawer__close {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #555;
+}
+
+</style>
+
+
+<div id="SearchDrawer" class="search-drawer" aria-hidden="true">
+  <div class="search-drawer__content page-width">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form">
+      <input type="search" name="q" placeholder="{{ section.settings.placeholder }}" class="search-drawer__input">
+      <button type="submit" class="btn btn--primary">Search</button>
+      <button type="button" id="CloseSearch" class="search-drawer__close" aria-label="Close search">&times;</button>
+    </form>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Search Drawer",
+  "tag": "section",
+  "class": "shopify-section-search-drawer",
+  "settings": [
+  {
+    "type": "text",
+    "id": "placeholder",
+    "default": "Search our store...",
+    "label": "Placeholder"
+  }
+],
+  "presets": [
+    {
+      "name": "Search Drawer"
+    }
+  ]
+}
+{% endschema %}

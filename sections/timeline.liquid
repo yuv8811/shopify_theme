@@ -1,0 +1,45 @@
+<style>
+
+.timeline-section { padding: 50px 20px; }
+.timeline { position: relative; max-width: 600px; margin: 30px auto; border-left: 2px solid #eee; padding-left: 30px; }
+.timeline__item { position: relative; margin-bottom: 30px; }
+.timeline__year { font-weight:700; font-size:18px; position: absolute; left: -90px; top: 0; text-align: right; width: 60px; color:#111; }
+.timeline__content h4 { margin: 0 0 5px; }
+
+</style>
+
+
+<div class="timeline-section page-width">
+  <h2 class="text-center">Our Journey</h2>
+  <div class="timeline">
+    <div class="timeline__item">
+      <span class="timeline__year">2024</span>
+      <div class="timeline__content">
+        <h4>Foundation</h4>
+        <p>Launched with a vision to create minimalistic organic everyday wear.</p>
+      </div>
+    </div>
+    <div class="timeline__item">
+      <span class="timeline__year">2026</span>
+      <div class="timeline__content">
+        <h4>Global Expansion</h4>
+        <p>Delivering premium collections to over 50 countries worldwide.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Brand Timeline",
+  "tag": "section",
+  "class": "shopify-section-timeline",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Brand Timeline"
+    }
+  ]
+}
+{% endschema %}

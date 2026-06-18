@@ -1,0 +1,34 @@
+{
+  "current": {
+    "seo_default_description": "A polished, high-converting Shopify storefront with strong performance, SEO foundations, and flexible sections for merchandising.",
+    "color_primary": "#163534",
+    "color_accent": "#be6a4f",
+    "color_background": "#f6f1e8",
+    "color_surface": "#ffffff",
+    "color_text": "#201f1c",
+    "color_muted": "#6f6a63",
+    "color_border": "#d7d0c4",
+    "container_width": 1240,
+    "section_spacing": 72,
+    "card_radius": 24,
+    "button_radius": 999,
+    "enable_sticky_header": true
+  },
+  "presets": {
+    "Default": {
+      "seo_default_description": "A polished, high-converting Shopify storefront with strong performance, SEO foundations, and flexible sections for merchandising.",
+      "color_primary": "#163534",
+      "color_accent": "#be6a4f",
+      "color_background": "#f6f1e8",
+      "color_surface": "#ffffff",
+      "color_text": "#201f1c",
+      "color_muted": "#6f6a63",
+      "color_border": "#d7d0c4",
+      "container_width": 1240,
+      "section_spacing": 72,
+      "card_radius": 24,
+      "button_radius": 999,
+      "enable_sticky_header": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<style>
+
+.product-reviews { padding: 40px 20px; border-top: 1px solid #eee; }
+.product-reviews__stats { font-weight: 700; margin-bottom: 20px; }
+.product-reviews__item { border-bottom: 1px solid #f9f9f9; padding: 15px 0; }
+
+</style>
+
+
+<div class="product-reviews page-width">
+  <h3>Reviews</h3>
+  <div class="product-reviews__stats">4.9 / 5.0 (2 Reviews)</div>
+  <div class="product-reviews__list">
+    <div class="product-reviews__item">
+      <strong>Sarah M.</strong> <span style="color:#ffb800;">★★★★★</span>
+      <p>Amazing feel, fits like a glove. Will buy again.</p>
+    </div>
+    <div class="product-reviews__item">
+      <strong>Kyle L.</strong> <span style="color:#ffb800;">★★★★★</span>
+      <p>Super fast delivery, quality is top notch.</p>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Product Reviews Grid",
+  "tag": "section",
+  "class": "shopify-section-product-reviews",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Reviews Grid"
+    }
+  ]
+}
+{% endschema %}

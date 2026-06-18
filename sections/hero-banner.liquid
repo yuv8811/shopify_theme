@@ -1,0 +1,163 @@
+<section
+  class="hero-banner hero-banner--{{ section.settings.content_alignment }}"
+  style="min-height: {{ section.settings.min_height }}px;"
+>
+  <div class="hero-banner__media">
+    {% if section.settings.image != blank %}
+      {{
+        section.settings.image
+        | image_url: width: 2200
+        | image_tag:
+          widths: '720,960,1200,1600,2000,2200',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.heading | escape
+      }}
+    {% else %}
+      <div class="hero-banner__placeholder"></div>
+    {% endif %}
+  </div>
+
+  <div class="hero-banner__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+
+  <div class="page-width">
+    <div class="hero-banner__inner"{% if section.settings.content_alignment == 'center' %} style="justify-items:center; text-align:center; margin-inline:auto;"{% elsif section.settings.content_alignment == 'right' %} style="justify-items:end; text-align:right; margin-left:auto;"{% endif %}>
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h1>{{ section.settings.heading }}</h1>
+      {% if section.settings.text != blank %}
+        <div class="hero-banner__copy">{{ section.settings.text }}</div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="hero-banner__highlights">
+          {% for block in section.blocks %}
+            <span class="hero-banner__highlight" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="button-row">
+        {% if section.settings.primary_button_label != blank %}
+          <a href="{{ section.settings.primary_button_link | default: routes.all_products_collection_url }}" class="btn btn--primary">{{ section.settings.primary_button_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_button_label != blank %}
+          <a href="{{ section.settings.secondary_button_link | default: routes.search_url }}" class="btn btn--ghost">{{ section.settings.secondary_button_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "shopify-section-hero-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "Strategic Shopify design",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Built to merchandise beautifully and convert quickly.",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "Use the hero to lead with your strongest collection, seasonal launch, or category story without sacrificing SEO structure or performance.",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 460,
+      "max": 900,
+      "step": 20,
+      "default": 700,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 55,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "default": "Shop collection",
+      "label": "Primary button label"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "default": "Browse catalog",
+      "label": "Secondary button label"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Fast storefront"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "blocks": [
+        { "type": "highlight", "settings": { "text": "SEO-ready architecture" } },
+        { "type": "highlight", "settings": { "text": "Flexible merchandising" } },
+        { "type": "highlight", "settings": { "text": "Upload-safe structure" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

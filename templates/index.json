@@ -1,0 +1,97 @@
+{
+  "name": "Index",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Launch with a faster, cleaner, more flexible Shopify storefront foundation.",
+        "link_label": "Explore the catalog"
+      }
+    },
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "eyebrow": "Conversion-first Shopify theme",
+        "heading": "A configurable storefront built for speed, SEO, and serious merchandising.",
+        "text": "Use this homepage structure as a polished starting point, then tune every key area in the theme editor without rewriting templates.",
+        "primary_button_label": "Shop featured collection",
+        "secondary_button_label": "Search the store"
+      },
+      "blocks": {
+        "hero-highlight-1": {
+          "type": "highlight",
+          "settings": {
+            "text": "Upload-safe architecture"
+          }
+        },
+        "hero-highlight-2": {
+          "type": "highlight",
+          "settings": {
+            "text": "Native Shopify forms"
+          }
+        },
+        "hero-highlight-3": {
+          "type": "highlight",
+          "settings": {
+            "text": "SEO-ready templates"
+          }
+        }
+      },
+      "block_order": [
+        "hero-highlight-1",
+        "hero-highlight-2",
+        "hero-highlight-3"
+      ]
+    },
+    "collection-list": {
+      "type": "collection-list",
+      "blocks": {
+        "collection-card-1": {
+          "type": "collection",
+          "settings": {
+            "kicker": "Top category"
+          }
+        },
+        "collection-card-2": {
+          "type": "collection",
+          "settings": {
+            "kicker": "Seasonal feature"
+          }
+        },
+        "collection-card-3": {
+          "type": "collection",
+          "settings": {
+            "kicker": "Best seller edit"
+          }
+        }
+      },
+      "block_order": [
+        "collection-card-1",
+        "collection-card-2",
+        "collection-card-3"
+      ]
+    },
+    "featured-collection": {
+      "type": "featured-collection"
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Built to adapt",
+        "heading": "Merchants get flexibility without sacrificing structure.",
+        "text": "<p>This starter theme now uses stronger homepage, product, collection, article, search, page, and cart templates so you can grow it into a real brand storefront instead of a fragile mockup.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "hero-banner",
+    "collection-list",
+    "featured-collection",
+    "rich-text",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,88 @@
+<section class="section">
+  <div class="page-width">
+    <div class="newsletter-panel text-center">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p class="muted">{{ section.settings.text }}</p>
+      {% endif %}
+
+      {% form 'customer', class: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {% if form.errors %}
+          <div class="form-status form-status--error">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        {% if form.posted_successfully? %}
+          <p class="form-status form-status--success">{{ section.settings.success_text }}</p>
+        {% endif %}
+        <div class="newsletter-form__row">
+          <input
+            class="field"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            placeholder="{{ section.settings.placeholder }}"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            required
+          >
+          <button type="submit" class="btn btn--primary">{{ section.settings.button_label }}</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter Signup",
+  "tag": "section",
+  "class": "shopify-section-newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "Retention-ready",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Turn first visits into repeat customers",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "Collect subscribers with a clean, native Shopify form that works without custom apps or fragile embeds.",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "default": "Email address",
+      "label": "Field placeholder"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Join now",
+      "label": "Button label"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "default": "Thanks for subscribing.",
+      "label": "Success message"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}

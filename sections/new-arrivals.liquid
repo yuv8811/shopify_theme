@@ -1,0 +1,65 @@
+<style>
+
+.new-arrivals { padding: 40px 20px; }
+
+</style>
+
+
+<div class="new-arrivals page-width">
+  <h2 class="text-center">{{ section.settings.heading }}</h2>
+  <div class="product-grid">
+    {% assign col = collections[section.settings.collection] %}
+    {% if col != blank and col.products_count > 0 %}
+      {% for product in col.products limit: 4 %}
+        <div class="product-card">
+          <a href="{{ product.url }}">
+            <div class="product-card__image-wrapper">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" loading="lazy" width="300" height="300">
+              {% else %}
+                <div style="background:#eee; width:100%; height:100%;"></div>
+              {% endif %}
+            </div>
+            <h3 class="product-card__title">{{ product.title }}</h3>
+            <div class="product-card__price">{{ product.price | money }}</div>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+      {% for i in (1..4) %}
+        <div class="product-card placeholder-card">
+          <div class="product-card__image-wrapper" style="background:#eee; height:250px;"></div>
+          <h3 class="product-card__title">New Arrival Item</h3>
+          <div class="product-card__price">$35.00</div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "New Arrivals",
+  "tag": "section",
+  "class": "shopify-section-new-arrivals",
+  "settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "New Arrivals",
+    "label": "Heading"
+  },
+  {
+    "type": "collection",
+    "id": "collection",
+    "label": "New Arrivals Collection"
+  }
+],
+  "presets": [
+    {
+      "name": "New Arrivals"
+    }
+  ]
+}
+{% endschema %}

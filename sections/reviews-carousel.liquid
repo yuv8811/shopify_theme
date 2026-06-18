@@ -1,0 +1,61 @@
+<style>
+
+.reviews-carousel { padding: 50px 20px; }
+.reviews-carousel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+.reviews-carousel__card {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 25px;
+  background: #fff;
+}
+.reviews-carousel__stars { color: #ffb800; font-size: 18px; margin-bottom: 10px; }
+.reviews-carousel__card h4 { margin-bottom: 10px; }
+.reviews-carousel__card p { color: #555; font-size: 14px; margin-bottom: 15px; }
+.reviews-carousel__name { font-weight: 600; font-size: 13px; color: #888; }
+
+</style>
+
+
+<div class="reviews-carousel page-width">
+  <h2 class="text-center">What Our Customers Say</h2>
+  <div class="reviews-carousel__grid">
+    <div class="reviews-carousel__card">
+      <div class="reviews-carousel__stars">★★★★★</div>
+      <h4>Perfect Fit</h4>
+      <p>Love this product! True to size and high quality materials.</p>
+      <span class="reviews-carousel__name">Emily R.</span>
+    </div>
+    <div class="reviews-carousel__card">
+      <div class="reviews-carousel__stars">★★★★★</div>
+      <h4>Beautiful Finish</h4>
+      <p>Looks even better in person. Exceeded my expectation.</p>
+      <span class="reviews-carousel__name">James T.</span>
+    </div>
+    <div class="reviews-carousel__card">
+      <div class="reviews-carousel__stars">★★★★☆</div>
+      <h4>Fast Shipping</h4>
+      <p>Arrived in just 2 days. The item is fantastic.</p>
+      <span class="reviews-carousel__name">Sophia L.</span>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Reviews Carousel",
+  "tag": "section",
+  "class": "shopify-section-reviews-carousel",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Reviews Carousel"
+    }
+  ]
+}
+{% endschema %}

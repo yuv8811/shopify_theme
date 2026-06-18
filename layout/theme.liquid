@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    {% liquid
+      assign meta_description = page_description | default: settings.seo_default_description | default: shop.description
+      assign seo_title = page_title
+      if current_tags
+        assign seo_title = seo_title | append: ' - ' | append: current_tags | join: ', '
+      endif
+      if current_page != 1
+        assign seo_title = seo_title | append: ' - Page ' | append: current_page
+      endif
+      unless seo_title contains shop.name
+        assign seo_title = seo_title | append: ' - ' | append: shop.name
+      endunless
+      assign social_image = settings.social_sharing_image
+      if social_image == blank and page_image
+        assign social_image = page_image
+      endif
+      assign twitter_card = 'summary'
+      if social_image != blank
+        assign twitter_card = 'summary_large_image'
+      endif
+    %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary | default: '#163534' }}">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+    {% endif %}
+
+    <title>{{ seo_title }}</title>
+
+    {% if meta_description != blank %}
+      <meta name="description" content="{{ meta_description | strip_html | strip_newlines | truncate: 160 | escape }}">
+      <meta property="og:description" content="{{ meta_description | strip_html | strip_newlines | truncate: 200 | escape }}">
+      <meta name="twitter:description" content="{{ meta_description | strip_html | strip_newlines | truncate: 200 | escape }}">
+    {% endif %}
+
+    {% if request.page_type == 'search' %}
+      <meta name="robots" content="noindex,follow">
+    {% endif %}
+
+    <meta property="og:site_name" content="{{ shop.name | escape }}">
+    <meta property="og:title" content="{{ seo_title | escape }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:type" content="{% if request.page_type == 'product' %}product{% elsif request.page_type == 'article' %}article{% else %}website{% endif %}">
+    <meta name="twitter:card" content="{{ twitter_card }}">
+    <meta name="twitter:title" content="{{ seo_title | escape }}">
+
+    {% if social_image != blank %}
+      <meta property="og:image" content="https:{{ social_image | image_url: width: 1200 }}">
+      <meta name="twitter:image" content="https:{{ social_image | image_url: width: 1200 }}">
+    {% endif %}
+
+    <style>
+      :root {
+        --page-width: {{ settings.container_width | default: 1240 }}px;
+        --section-space: {{ settings.section_spacing | default: 72 }}px;
+        --color-primary: {{ settings.color_primary | default: '#163534' }};
+        --color-accent: {{ settings.color_accent | default: '#be6a4f' }};
+        --color-background: {{ settings.color_background | default: '#f6f1e8' }};
+        --color-surface: {{ settings.color_surface | default: '#ffffff' }};
+        --color-text: {{ settings.color_text | default: '#201f1c' }};
+        --color-muted: {{ settings.color_muted | default: '#6f6a63' }};
+        --color-border: {{ settings.color_border | default: '#d7d0c4' }};
+        --radius-card: {{ settings.card_radius | default: 24 }}px;
+        --radius-button: {{ settings.button_radius | default: 999 }}px;
+      }
+    </style>
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": {{ shop.name | json }},
+            "url": {{ shop.url | json }}{% if social_image != blank %},
+            "logo": {{ social_image | image_url: width: 600 | prepend: 'https:' | json }}{% endif %}
+          },
+          {
+            "@type": "WebSite",
+            "name": {{ shop.name | json }},
+            "url": {{ shop.url | json }},
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {{ shop.url | append: routes.search_url | append: '?q={search_term_string}' | json }},
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body class="template-{{ request.page_type | handle }}{% if settings.enable_sticky_header %} sticky-header-enabled{% endif %}">
+    <a class="skip-link" href="#MainContent">Skip to content</a>
+
+    {% section 'header' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </body>
+</html>

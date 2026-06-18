@@ -1,0 +1,51 @@
+<style>
+
+.faq-accordion { padding: 50px 20px; max-width: 800px; }
+.faq-accordion__item { border-bottom: 1px solid #eee; padding: 15px 0; }
+.faq-accordion__question { font-size: 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+.faq-accordion__question::after { content: '+'; }
+.faq-accordion__item.active .faq-accordion__question::after { content: '-'; }
+.faq-accordion__answer { display: none; margin-top: 10px; color: #555; }
+.faq-accordion__item.active .faq-accordion__answer { display: block; }
+
+</style>
+
+
+<div class="faq-accordion page-width">
+  <h2 class="text-center">Frequently Asked Questions</h2>
+  <div class="faq-accordion__items">
+    <div class="faq-accordion__item">
+      <h3 class="faq-accordion__question">How fast is shipping?</h3>
+      <div class="faq-accordion__answer"><p>Standard shipping takes 3-5 business days. Express shipping takes 1-2 days.</p></div>
+    </div>
+    <div class="faq-accordion__item">
+      <h3 class="faq-accordion__question">What is your refund policy?</h3>
+      <div class="faq-accordion__answer"><p>We offer full refunds within 30 days of purchase for any undamaged items.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-accordion__question').forEach(q => {
+      q.addEventListener('click', () => {
+        const parent = q.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "tag": "section",
+  "class": "shopify-section-faq",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FAQ Accordion"
+    }
+  ]
+}
+{% endschema %}

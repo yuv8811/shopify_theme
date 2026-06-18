@@ -1,0 +1,117 @@
+<style>
+
+.hero-slider {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+.hero-slider__slides {
+  height: 100%;
+  position: relative;
+}
+.hero-slider__slide {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+.hero-slider__slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+.hero-slider__content {
+  color: #fff;
+  max-width: 600px;
+  padding: 20px;
+}
+.hero-slider__content h2 {
+  font-size: 36px;
+  color: #fff;
+}
+.hero-slider__dots {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+.hero-slider__dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+.hero-slider__dot.active {
+  background: #ffffff;
+}
+
+</style>
+
+
+<div class="hero-slider" id="HeroSlider">
+  <div class="hero-slider__slides">
+    <div class="hero-slider__slide active" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+      <div class="hero-slider__content text-center">
+        <h2>Fresh Collection Arrivals</h2>
+        <p>Premium aesthetics for modern living.</p>
+        <a href="#" class="btn btn--primary">View New</a>
+      </div>
+    </div>
+    <div class="hero-slider__slide" style="background: linear-gradient(135deg, #fc466b, #3f5efb);">
+      <div class="hero-slider__content text-center">
+        <h2>Limited Season Offers</h2>
+        <p>Save up to 40% on catalog essentials.</p>
+        <a href="#" class="btn btn--primary">Get Offer</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slider__dots">
+    <span class="hero-slider__dot active" data-slide="0"></span>
+    <span class="hero-slider__dot" data-slide="1"></span>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('HeroSlider');
+    if (slider) {
+      const slides = slider.querySelectorAll('.hero-slider__slide');
+      const dots = slider.querySelectorAll('.hero-slider__dot');
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.getAttribute('data-slide'));
+          slides.forEach(s => s.classList.remove('active'));
+          dots.forEach(d => d.classList.remove('active'));
+          slides[idx].classList.add('active');
+          dot.classList.add('active');
+        });
+      });
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Hero Slider",
+  "tag": "section",
+  "class": "shopify-section-hero-slider",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "default": "Image Slider",
+    "label": "Section Title"
+  }
+],
+  "presets": [
+    {
+      "name": "Hero Slider"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{% if article != blank %}
+  <article class="article-card">
+    <a href="{{ article.url }}" class="article-card__link">
+      {% if article.image %}
+        <div class="article-card__media">
+          {{
+            article.image
+            | image_url: width: 960
+            | image_tag:
+              widths: '320,480,640,960',
+              sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw',
+              class: 'article-card__image',
+              loading: 'lazy',
+              alt: article.image.alt | default: article.title | escape
+          }}
+        </div>
+      {% endif %}
+
+      <div class="article-card__content">
+        {% if article.tags != blank %}
+          <p class="article-card__eyebrow">{{ article.tags | first }}</p>
+        {% endif %}
+        <h3 class="article-card__title">{{ article.title }}</h3>
+        <p class="article-card__meta">{{ article.published_at | date: '%B %d, %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</p>
+        {% if article.excerpt != blank %}
+          <div class="article-card__excerpt">{{ article.excerpt | strip_html | truncatewords: 20 }}</div>
+        {% elsif article.content != blank %}
+          <div class="article-card__excerpt">{{ article.content | strip_html | truncatewords: 20 }}</div>
+        {% endif %}
+      </div>
+    </a>
+  </article>
+{% endif %}

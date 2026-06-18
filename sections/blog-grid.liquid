@@ -1,0 +1,51 @@
+<style>
+
+.blog-grid-section { padding: 20px; }
+
+</style>
+
+
+<div class="blog-grid-section page-width">
+  <div class="blog-grid">
+    {% for article in blog.articles %}
+      <div class="article-card">
+        <a href="{{ article.url }}">
+          <div class="article-card__image-wrapper">
+            <img src="{{ article.image | image_url: width: 400 }}" alt="{{ article.title }}" loading="lazy" width="400" height="250">
+          </div>
+          <div class="article-card__info">
+            <h3>{{ article.title }}</h3>
+            <span class="article-card__meta">{{ article.published_at | date: '%b %d, %Y' }}</span>
+          </div>
+        </a>
+      </div>
+    {% else %}
+      {% for i in (1..6) %}
+        <div class="article-card">
+          <a href="#">
+            <div class="article-card__image-wrapper" style="background:#eee; height:200px;"></div>
+            <div class="article-card__info">
+              <h3>Sample Journal Entry {{ i }}</h3>
+              <span class="article-card__meta">June 16, 2026</span>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Blog Articles Grid",
+  "tag": "section",
+  "class": "shopify-section-blog-grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Blog Articles Grid"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+{% assign featured_collection = section.settings.collection %}
+
+<section class="section">
+  <div class="page-width">
+    <div class="section-header{% if section.settings.center_text %} section-header--center{% endif %}">
+      {% if section.settings.eyebrow != blank %}
+        <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p class="muted">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    {% if featured_collection != blank and featured_collection.products_count > 0 %}
+      <div class="product-grid" style="--columns: {{ section.settings.columns_desktop }};">
+        {% for product in featured_collection.products limit: section.settings.products_to_show %}
+          {% render 'product-card', product: product, show_vendor: section.settings.show_vendor, show_secondary_image: section.settings.show_secondary_image %}
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_view_all %}
+        <div class="button-row"{% if section.settings.center_text %} style="justify-content:center;"{% endif %}>
+          <a class="btn btn--secondary" href="{{ featured_collection.url }}">{{ section.settings.view_all_label }}</a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="empty-state">
+        <h3>Select a collection</h3>
+        <p>Add a collection in the theme editor to populate this product grid.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "class": "shopify-section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "Featured selection",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Merchandise your strongest assortment",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "A configurable product grid gives you campaign flexibility without changing templates.",
+      "label": "Text"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Desktop columns"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show secondary image on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show view all button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View full collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "center_text",
+      "label": "Center content",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

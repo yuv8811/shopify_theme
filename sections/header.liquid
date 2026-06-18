@@ -1,0 +1,148 @@
+<header class="site-header">
+  <div class="page-width">
+    <div class="header">
+      <button
+        type="button"
+        class="header__menu-button"
+        data-menu-toggle
+        aria-controls="HeaderMobileNav-{{ section.id }}"
+        aria-expanded="false"
+      >
+        <span class="visually-hidden">Open menu</span>
+        <span class="header__menu-button-line"></span>
+        <span class="header__menu-button-line"></span>
+        <span class="header__menu-button-line"></span>
+      </button>
+
+      <a href="{{ routes.root_url }}" class="header__brand" aria-label="{{ shop.name | escape }}">
+        {% if section.settings.logo != blank %}
+          {{
+            section.settings.logo
+            | image_url: width: section.settings.logo_width
+            | image_tag:
+              widths: '120,180,240,320',
+              width: section.settings.logo_width,
+              class: 'header__logo',
+              alt: shop.name | escape
+          }}
+        {% endif %}
+        <div class="header__brand-text">
+          <span class="header__brand-name">{{ shop.name }}</span>
+          {% if section.settings.tagline != blank %}
+            <span class="header__brand-tagline">{{ section.settings.tagline }}</span>
+          {% endif %}
+        </div>
+      </a>
+
+      <nav class="header__nav" aria-label="Primary">
+        <ul class="header__nav-list">
+          {% if section.settings.menu != blank %}
+            {% for link in section.settings.menu.links %}
+              <li class="header__nav-item">
+                {% if link.links != blank %}
+                  <details class="header__submenu">
+                    <summary>{{ link.title }}</summary>
+                    <ul class="header__submenu-list">
+                      {% for child_link in link.links %}
+                        <li><a class="header__submenu-link" href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </details>
+                {% else %}
+                  <a class="header__nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        {% if section.settings.show_search %}
+          <a class="header__action" href="{{ routes.search_url }}">
+            <span>Search</span>
+          </a>
+        {% endif %}
+
+        {% if section.settings.show_account and shop.customer_accounts_enabled %}
+          <a class="header__action" href="{{ routes.account_url }}">
+            <span>Account</span>
+          </a>
+        {% endif %}
+
+        <a class="header__action" href="{{ routes.cart_url }}" aria-label="Cart">
+          <span>Cart</span>
+          <span class="header__action-count">{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+
+    <nav id="HeaderMobileNav-{{ section.id }}" class="header__mobile-nav" data-mobile-nav hidden aria-label="Mobile navigation">
+      <ul class="header__mobile-nav-list">
+        {% if section.settings.menu != blank %}
+          {% for link in section.settings.menu.links %}
+            <li>
+              <a class="header__nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {% if link.links != blank %}
+                <ul class="header__mobile-nav-list">
+                  {% for child_link in link.links %}
+                    <li><a class="header__submenu-link" href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "header",
+  "class": "shopify-section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Navigation menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 240,
+      "step": 10,
+      "default": 140,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Performance-first Shopify storefront"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search link",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account link",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

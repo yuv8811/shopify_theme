@@ -1,0 +1,32 @@
+<style>
+
+.blog-newsletter { padding: 20px; }
+
+</style>
+
+
+<div class="blog-newsletter page-width">
+  <div style="background:#111; color:#fff; padding:30px; border-radius:6px; text-align:center;">
+    <h4>📩 Subscribe to our Journal</h4>
+    <p style="font-size:14px; color:#ccc; margin-top:5px;">Receive weekly curated designer digests straight to your mailbox.</p>
+    <form style="margin-top:15px; display:inline-flex; gap:10px;">
+      <input type="email" placeholder="email@address.com" style="padding:8px 12px; border-radius:4px; border:none;">
+      <button type="submit" class="btn btn--primary" style="background:#fff; color:#111; padding:8px 16px;">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Blog Newsletter Signup",
+  "tag": "section",
+  "class": "shopify-section-newsletter-signup",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Blog Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}

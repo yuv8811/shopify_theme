@@ -1,0 +1,61 @@
+{% liquid
+  assign card_product = product
+  assign show_vendor = show_vendor | default: false
+  assign show_secondary_image = show_secondary_image | default: false
+%}
+
+{% if card_product != blank %}
+  <article class="product-card">
+    <a href="{{ card_product.url }}" class="product-card__link" aria-label="{{ card_product.title | escape }}">
+      <div class="product-card__media">
+        {% if card_product.featured_media %}
+          {% assign featured_media = card_product.featured_media %}
+          {{
+            featured_media
+            | image_url: width: 900
+            | image_tag:
+              widths: '220,320,440,640,900',
+              sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+              class: 'product-card__image',
+              loading: 'lazy',
+              alt: featured_media.alt | default: card_product.title | escape
+          }}
+          {% if show_secondary_image and card_product.media.size > 1 %}
+            {% assign secondary_media = card_product.media[1] %}
+            {{
+              secondary_media
+              | image_url: width: 900
+              | image_tag:
+                widths: '220,320,440,640,900',
+                sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+                class: 'product-card__image product-card__image--secondary',
+                loading: 'lazy',
+                alt: secondary_media.alt | default: card_product.title | escape
+            }}
+          {% endif %}
+        {% else %}
+          <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+        {% endif %}
+
+        {% if card_product.compare_at_price > card_product.price %}
+          <span class="product-card__badge">Sale</span>
+        {% elsif card_product.available == false %}
+          <span class="product-card__badge product-card__badge--muted">Sold out</span>
+        {% endif %}
+      </div>
+
+      <div class="product-card__content">
+        {% if show_vendor and card_product.vendor != blank %}
+          <p class="product-card__vendor">{{ card_product.vendor }}</p>
+        {% endif %}
+        <h3 class="product-card__title">{{ card_product.title }}</h3>
+        <div class="product-card__pricing">
+          <span class="product-card__price">{{ card_product.price | money }}</span>
+          {% if card_product.compare_at_price > card_product.price %}
+            <span class="product-card__compare">{{ card_product.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+  </article>
+{% endif %}

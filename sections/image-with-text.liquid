@@ -1,0 +1,93 @@
+<style>
+
+.image-with-text {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 20px;
+  flex-wrap: wrap;
+}
+.image-with-text.layout-right {
+  flex-direction: row-reverse;
+}
+.image-with-text__media, .image-with-text__content {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.image-with-text__media img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.image-with-text__placeholder {
+  width:100%; height:350px;
+  background: #eaeaea;
+  border-radius: 6px;
+}
+
+</style>
+
+
+<div class="image-with-text page-width layout-{{ section.settings.layout }}">
+  <div class="image-with-text__media">
+    {% if section.settings.image %}
+      <img src="{{ section.settings.image | image_url: width: 600 }}" alt="{{ section.settings.heading }}" loading="lazy" width="600" height="400">
+    {% else %}
+      <div class="image-with-text__placeholder"></div>
+    {% endif %}
+  </div>
+  <div class="image-with-text__content">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+    <a href="#" class="btn btn--secondary">Learn More</a>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Image with Text",
+  "tag": "section",
+  "class": "shopify-section-image-with-text",
+  "settings": [
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  },
+  {
+    "type": "select",
+    "id": "layout",
+    "options": [
+      {
+        "value": "left",
+        "label": "Image left"
+      },
+      {
+        "value": "right",
+        "label": "Image right"
+      }
+    ],
+    "default": "left",
+    "label": "Layout"
+  },
+  {
+    "type": "text",
+    "id": "heading",
+    "default": "Premium Quality Materials",
+    "label": "Heading"
+  },
+  {
+    "type": "textarea",
+    "id": "text",
+    "default": "Our products are sourced from sustainable factories and crafted by local artisans.",
+    "label": "Text"
+  }
+],
+  "presets": [
+    {
+      "name": "Image with Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+<style>
+
+.testimonials { padding: 60px 20px; max-width: 700px; }
+.testimonials__slide { display: none; }
+.testimonials__slide.active { display: block; }
+.testimonials__quote { font-style: italic; font-size: 20px; line-height: 1.6; color: #333; margin-bottom: 15px; }
+.testimonials__author { font-weight: 600; color: #777; }
+.testimonials__dots { display: flex; justify-content: center; gap: 8px; margin-top: 25px; }
+.testimonials__dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; }
+.testimonials__dot.active { background: #111; }
+
+</style>
+
+
+<div class="testimonials page-width text-center" id="Testimonials">
+  <div class="testimonials__slide active">
+    <blockquote class="testimonials__quote">"Extremely happy with the quality. The checkout was fast, and shipping was incredibly quick."</blockquote>
+    <cite class="testimonials__author">- Sarah J.</cite>
+  </div>
+  <div class="testimonials__slide">
+    <blockquote class="testimonials__quote">"An outstanding experience. This is my third purchase, and they never disappoint!"</blockquote>
+    <cite class="testimonials__author">- David K.</cite>
+  </div>
+  <div class="testimonials__dots">
+    <span class="testimonials__dot active" data-slide="0"></span>
+    <span class="testimonials__dot" data-slide="1"></span>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('Testimonials');
+    if (section) {
+      const slides = section.querySelectorAll('.testimonials__slide');
+      const dots = section.querySelectorAll('.testimonials__dot');
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.getAttribute('data-slide'));
+          slides.forEach(s => s.classList.remove('active'));
+          dots.forEach(d => d.classList.remove('active'));
+          slides[idx].classList.add('active');
+          dot.classList.add('active');
+        });
+      });
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Testimonials Slider",
+  "tag": "section",
+  "class": "shopify-section-testimonials",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Testimonials Slider"
+    }
+  ]
+}
+{% endschema %}

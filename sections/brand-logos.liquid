@@ -1,0 +1,45 @@
+<style>
+
+.brand-logos { padding: 40px 20px; }
+.brand-logos h4 { color: #888; text-transform: uppercase; font-size: 13px; letter-spacing: 0.1em; margin-bottom: 25px; }
+.brand-logos__grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.brand-logos__logo {
+  font-weight: 800;
+  font-size: 24px;
+  color: #bbb;
+  letter-spacing: 0.05em;
+}
+
+</style>
+
+
+<div class="brand-logos page-width text-center">
+  <h4>Featured In</h4>
+  <div class="brand-logos__grid">
+    <div class="brand-logos__logo">BRAND A</div>
+    <div class="brand-logos__logo">BRAND B</div>
+    <div class="brand-logos__logo">BRAND C</div>
+    <div class="brand-logos__logo">BRAND D</div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Brand Logos",
+  "tag": "section",
+  "class": "shopify-section-brand-logos",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Brand Logos"
+    }
+  ]
+}
+{% endschema %}

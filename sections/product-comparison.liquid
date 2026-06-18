@@ -1,0 +1,33 @@
+<style>
+
+.product-comparison { padding: 40px 20px; }
+.product-comparison table th, .product-comparison table td { border:1px solid #eee; padding:10px; text-align:center; }
+
+</style>
+
+
+<div class="product-comparison page-width">
+  <h3>How it compares</h3>
+  <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+    <thead><tr><th>Spec</th><th>This Model</th><th>Previous Model</th></tr></thead>
+    <tbody>
+      <tr><td>Battery Life</td><td>12 hrs</td><td>8 hrs</td></tr>
+      <tr><td>Weight</td><td>150g</td><td>190g</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+{% schema %}
+{
+  "name": "Product Comparison",
+  "tag": "section",
+  "class": "shopify-section-product-comparison",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Comparison"
+    }
+  ]
+}
+{% endschema %}

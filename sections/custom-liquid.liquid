@@ -1,0 +1,31 @@
+<style>
+
+.custom-liquid { padding: 30px 20px; }
+
+</style>
+
+
+<div class="custom-liquid page-width">
+  {{ section.settings.custom_liquid }}
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Liquid",
+  "tag": "section",
+  "class": "shopify-section-custom-liquid",
+  "settings": [
+  {
+    "type": "textarea",
+    "id": "custom_liquid",
+    "label": "Custom Liquid/HTML code"
+  }
+],
+  "presets": [
+    {
+      "name": "Custom Liquid"
+    }
+  ]
+}
+{% endschema %}

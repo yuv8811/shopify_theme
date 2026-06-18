@@ -1,0 +1,15 @@
+{
+  "name": "Article",
+  "sections": {
+    "main-article": {
+      "type": "main-article"
+    },
+    "related-posts": {
+      "type": "related-posts"
+    }
+  },
+  "order": [
+    "main-article",
+    "related-posts"
+  ]
+}

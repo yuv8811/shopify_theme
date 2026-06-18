@@ -1,0 +1,97 @@
+<section class="section">
+  <div class="page-width">
+    {% if collection.products_count > 0 %}
+      {% paginate collection.products by section.settings.products_per_page %}
+        <div class="collection-toolbar">
+          <p class="collection-toolbar__count">{{ collection.products_count }} products</p>
+
+          <form method="get">
+            <label class="visually-hidden" for="SortBy-{{ section.id }}">Sort by</label>
+            <select id="SortBy-{{ section.id }}" name="sort_by" class="select" onchange="this.form.submit()">
+              {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+              {% for option in collection.sort_options %}
+                <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+
+        <div class="product-grid" style="--columns: {{ section.settings.columns_desktop }};">
+          {% for product in collection.products %}
+            {% render 'product-card', product: product, show_vendor: section.settings.show_vendor, show_secondary_image: section.settings.show_secondary_image %}
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <nav class="pagination" aria-label="Pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}">Previous</a>
+            {% endif %}
+
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <a class="page" href="{{ part.url }}">{{ part.title }}</a>
+              {% else %}
+                <span class="page{% if part.title == paginate.current_page %} current{% endif %}">{{ part.title }}</span>
+              {% endif %}
+            {% endfor %}
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}">Next</a>
+            {% endif %}
+          </nav>
+        {% endif %}
+      {% endpaginate %}
+    {% else %}
+      <div class="empty-state">
+        <h2>No products found</h2>
+        <p>This collection is empty right now. Add products to see the grid populate.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Products Grid",
+  "tag": "section",
+  "class": "shopify-section-collection-grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show secondary image on hover",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Products Grid"
+    }
+  ]
+}
+{% endschema %}

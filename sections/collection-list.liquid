@@ -1,0 +1,148 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-header{% if section.settings.center_text %} section-header--center{% endif %}">
+      {% if section.settings.eyebrow != blank %}
+        <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.text != blank %}
+        <p class="muted">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="collection-list__grid" style="--columns: {{ section.settings.columns_desktop }};">
+        {% for block in section.blocks %}
+          {% assign item_collection = block.settings.collection %}
+          <article class="collection-list__card" {{ block.shopify_attributes }}>
+            {% if item_collection != blank %}
+              <a class="collection-list__link" href="{{ item_collection.url }}">
+                {% if item_collection.featured_image != blank %}
+                  <div class="collection-list__image">
+                    {{
+                      item_collection.featured_image
+                      | image_url: width: 1200
+                      | image_tag:
+                        widths: '320,480,720,960,1200',
+                        sizes: '(min-width: 990px) 25vw, 100vw',
+                        loading: 'lazy',
+                        alt: item_collection.title | escape
+                    }}
+                  </div>
+                {% else %}
+                  <div class="collection-list__placeholder">{{ 'collection-1' | placeholder_svg_tag }}</div>
+                {% endif %}
+                <div class="collection-list__overlay">
+                  <p class="eyebrow">{{ block.settings.kicker }}</p>
+                  <h3>{{ block.settings.title | default: item_collection.title }}</h3>
+                  {% if block.settings.text != blank %}
+                    <p>{{ block.settings.text }}</p>
+                  {% elsif item_collection.description != blank %}
+                    <p>{{ item_collection.description | strip_html | truncatewords: 18 }}</p>
+                  {% endif %}
+                </div>
+              </a>
+            {% else %}
+              <div class="collection-list__fallback">
+                <div class="collection-list__placeholder">{{ 'collection-1' | placeholder_svg_tag }}</div>
+                <div class="collection-list__overlay">
+                  <p class="eyebrow">Collection</p>
+                  <h3>Add a collection</h3>
+                  <p>Select a collection in the block settings to complete this card.</p>
+                </div>
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>Add collection cards</h3>
+        <p>Use the theme editor to pick collections and turn this section into a browsing hub.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "tag": "section",
+  "class": "shopify-section-collection-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "Shop by category",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Curate collections for fast discovery",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "Use collection cards to direct shoppers into your highest-margin or most strategic browsing paths.",
+      "label": "Text"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "center_text",
+      "label": "Center section heading",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker",
+          "default": "Curated edit"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Custom text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Collection List",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}
